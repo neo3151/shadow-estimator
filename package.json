@@ -1,0 +1,22 @@
+{
+  "name": "shadow-estimator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 3001 -H 0.0.0.0",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@google/genai": "^2.13.0",
+    "lucide-react": "^1.27.0",
+    "next": "14.2.15",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "8",
+    "eslint-config-next": "14.2.15"
+  }
+}

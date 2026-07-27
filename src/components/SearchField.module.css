@@ -1,0 +1,36 @@
+.wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 10;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: #f0f0f0;
+}

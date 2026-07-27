@@ -1,0 +1,38 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.table thead tr {
+  background: var(--panel-bg);
+}
+
+.table th {
+  text-align: left;
+}
+
+.number {
+  text-align: right;
+}
+
+.row td {
+  vertical-align: middle;
+}
+
+.cell {
+  padding: 0.5rem;
+}
+
+.manual {
+  color: orange;
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,2860 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Dataset",
+  "name": "US Construction Materials Pricing Dataset 2026",
+  "description": "Per-unit pricing, labor costs, waste factors, sustainability ratings, and durability metrics for 189 construction materials. Sourced from RSMeans, BLS PPI, and contractor surveys 2025-2026.",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "@type": "Organization",
+    "name": "Hammer.io",
+    "url": "https://hammer.io"
+  },
+  "datePublished": "2026-04-26",
+  "version": "2026.04",
+  "variableMeasured": [
+    "unitPrice",
+    "priceRange",
+    "laborCostPerUnit",
+    "wasteFactorPercent",
+    "sustainabilityRating",
+    "durabilityYears"
+  ],
+  "records": 189,
+  "data": [
+    {
+      "slug": "pressure-treated-lumber",
+      "name": "Pressure-Treated Lumber",
+      "category": "Lumber",
+      "unitPrice": 5.5,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 3.8,
+        "high": 8.2
+      },
+      "laborCostPerUnit": 2.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "cedar-lumber",
+      "name": "Cedar Lumber",
+      "category": "Lumber",
+      "unitPrice": 8.5,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 6,
+        "high": 12
+      },
+      "laborCostPerUnit": 2.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "redwood-lumber",
+      "name": "Redwood Lumber",
+      "category": "Lumber",
+      "unitPrice": 12,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 8,
+        "high": 18
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 35
+    },
+    {
+      "slug": "douglas-fir",
+      "name": "Douglas Fir",
+      "category": "Lumber",
+      "unitPrice": 4.8,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 3.2,
+        "high": 7.5
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "southern-yellow-pine",
+      "name": "Southern Yellow Pine",
+      "category": "Lumber",
+      "unitPrice": 4.2,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 2.8,
+        "high": 6.5
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "spruce-pine-fir",
+      "name": "Spruce-Pine-Fir (SPF)",
+      "category": "Lumber",
+      "unitPrice": 3.8,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 2.5,
+        "high": 5.8
+      },
+      "laborCostPerUnit": 1.8,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "lvl-beam",
+      "name": "LVL Beam (Laminated Veneer Lumber)",
+      "category": "Lumber",
+      "unitPrice": 14,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 8,
+        "high": 28
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "plywood-sheathing",
+      "name": "Plywood Sheathing",
+      "category": "Lumber",
+      "unitPrice": 38,
+      "unit": "sheet (4x8)",
+      "priceRange": {
+        "low": 28,
+        "high": 55
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 3,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "osb-sheathing",
+      "name": "OSB (Oriented Strand Board)",
+      "category": "Lumber",
+      "unitPrice": 28,
+      "unit": "sheet (4x8)",
+      "priceRange": {
+        "low": 18,
+        "high": 42
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "ipe-hardwood",
+      "name": "Ipe Hardwood",
+      "category": "Lumber",
+      "unitPrice": 22,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 16,
+        "high": 30
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 2,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "ready-mix-concrete",
+      "name": "Ready-Mix Concrete",
+      "category": "Concrete",
+      "unitPrice": 140,
+      "unit": "cubic yard",
+      "priceRange": {
+        "low": 110,
+        "high": 180
+      },
+      "laborCostPerUnit": 65,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "bagged-concrete-mix",
+      "name": "Bagged Concrete Mix",
+      "category": "Concrete",
+      "unitPrice": 6.5,
+      "unit": "80-lb bag",
+      "priceRange": {
+        "low": 4.5,
+        "high": 9
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "fast-setting-concrete",
+      "name": "Fast-Setting Concrete",
+      "category": "Concrete",
+      "unitPrice": 8.5,
+      "unit": "50-lb bag",
+      "priceRange": {
+        "low": 6,
+        "high": 12
+      },
+      "laborCostPerUnit": 3.5,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 2,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "fiber-reinforced-concrete",
+      "name": "Fiber-Reinforced Concrete",
+      "category": "Concrete",
+      "unitPrice": 155,
+      "unit": "cubic yard",
+      "priceRange": {
+        "low": 125,
+        "high": 200
+      },
+      "laborCostPerUnit": 70,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 2,
+      "durabilityYears": 60
+    },
+    {
+      "slug": "stamped-concrete",
+      "name": "Stamped Concrete",
+      "category": "Concrete",
+      "unitPrice": 16,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 10,
+        "high": 25
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 2,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "rebar-reinforcement",
+      "name": "Rebar (Steel Reinforcement)",
+      "category": "Concrete",
+      "unitPrice": 0.75,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.5,
+        "high": 1.2
+      },
+      "laborCostPerUnit": 0.6,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "wire-mesh-reinforcement",
+      "name": "Wire Mesh Reinforcement",
+      "category": "Concrete",
+      "unitPrice": 0.18,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.12,
+        "high": 0.3
+      },
+      "laborCostPerUnit": 0.15,
+      "wasteFactorPercent": 15,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "concrete-blocks",
+      "name": "Concrete Blocks (CMU)",
+      "category": "Concrete",
+      "unitPrice": 2.25,
+      "unit": "each",
+      "priceRange": {
+        "low": 1.5,
+        "high": 3.5
+      },
+      "laborCostPerUnit": 4.5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "steel-i-beam",
+      "name": "Steel I-Beam",
+      "category": "Steel",
+      "unitPrice": 22,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 12,
+        "high": 45
+      },
+      "laborCostPerUnit": 15,
+      "wasteFactorPercent": 3,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "steel-column",
+      "name": "Steel Column (Lally Column)",
+      "category": "Steel",
+      "unitPrice": 85,
+      "unit": "each",
+      "priceRange": {
+        "low": 50,
+        "high": 150
+      },
+      "laborCostPerUnit": 120,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "steel-studs",
+      "name": "Steel Studs",
+      "category": "Steel",
+      "unitPrice": 5.8,
+      "unit": "each (8ft)",
+      "priceRange": {
+        "low": 3.5,
+        "high": 9
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "metal-roofing-panels",
+      "name": "Metal Roofing Panels",
+      "category": "Steel",
+      "unitPrice": 4.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2.5,
+        "high": 8
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 5,
+      "durabilityYears": 60
+    },
+    {
+      "slug": "standing-seam-metal",
+      "name": "Standing Seam Metal Roof",
+      "category": "Steel",
+      "unitPrice": 10,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 7,
+        "high": 15
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 5,
+      "durabilityYears": 70
+    },
+    {
+      "slug": "steel-joist-hangers",
+      "name": "Steel Joist Hangers",
+      "category": "Steel",
+      "unitPrice": 3.8,
+      "unit": "each",
+      "priceRange": {
+        "low": 1.5,
+        "high": 8
+      },
+      "laborCostPerUnit": 1.5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "asphalt-shingles",
+      "name": "Asphalt Shingles",
+      "category": "Roofing",
+      "unitPrice": 100,
+      "unit": "square (100 sq ft)",
+      "priceRange": {
+        "low": 70,
+        "high": 150
+      },
+      "laborCostPerUnit": 75,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "architectural-shingles",
+      "name": "Architectural Shingles",
+      "category": "Roofing",
+      "unitPrice": 140,
+      "unit": "square (100 sq ft)",
+      "priceRange": {
+        "low": 100,
+        "high": 200
+      },
+      "laborCostPerUnit": 85,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 35
+    },
+    {
+      "slug": "roof-underlayment",
+      "name": "Roof Underlayment (Synthetic)",
+      "category": "Roofing",
+      "unitPrice": 0.25,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.15,
+        "high": 0.45
+      },
+      "laborCostPerUnit": 0.15,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "ice-water-shield",
+      "name": "Ice and Water Shield",
+      "category": "Roofing",
+      "unitPrice": 0.9,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.6,
+        "high": 1.4
+      },
+      "laborCostPerUnit": 0.25,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "clay-roof-tiles",
+      "name": "Clay Roof Tiles",
+      "category": "Roofing",
+      "unitPrice": 12,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 8,
+        "high": 20
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 5,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "concrete-roof-tiles",
+      "name": "Concrete Roof Tiles",
+      "category": "Roofing",
+      "unitPrice": 6.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 4,
+        "high": 10
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "ridge-vent",
+      "name": "Ridge Vent",
+      "category": "Roofing",
+      "unitPrice": 3.5,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 2,
+        "high": 6
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "fiberglass-batt-insulation",
+      "name": "Fiberglass Batt Insulation",
+      "category": "Insulation",
+      "unitPrice": 0.7,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.4,
+        "high": 1.2
+      },
+      "laborCostPerUnit": 0.6,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 80
+    },
+    {
+      "slug": "blown-in-cellulose",
+      "name": "Blown-In Cellulose Insulation",
+      "category": "Insulation",
+      "unitPrice": 1.2,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.8,
+        "high": 1.8
+      },
+      "laborCostPerUnit": 0.8,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "spray-foam-closed",
+      "name": "Closed-Cell Spray Foam",
+      "category": "Insulation",
+      "unitPrice": 1.8,
+      "unit": "sq ft (per inch)",
+      "priceRange": {
+        "low": 1.2,
+        "high": 2.5
+      },
+      "laborCostPerUnit": 1,
+      "wasteFactorPercent": 3,
+      "sustainabilityRating": 2,
+      "durabilityYears": 80
+    },
+    {
+      "slug": "spray-foam-open",
+      "name": "Open-Cell Spray Foam",
+      "category": "Insulation",
+      "unitPrice": 0.65,
+      "unit": "sq ft (per inch)",
+      "priceRange": {
+        "low": 0.4,
+        "high": 1
+      },
+      "laborCostPerUnit": 0.5,
+      "wasteFactorPercent": 3,
+      "sustainabilityRating": 2,
+      "durabilityYears": 80
+    },
+    {
+      "slug": "rigid-foam-board",
+      "name": "Rigid Foam Board (XPS)",
+      "category": "Insulation",
+      "unitPrice": 0.55,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.35,
+        "high": 0.85
+      },
+      "laborCostPerUnit": 0.4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "mineral-wool-insulation",
+      "name": "Mineral Wool (Rockwool) Insulation",
+      "category": "Insulation",
+      "unitPrice": 1.3,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.9,
+        "high": 1.8
+      },
+      "laborCostPerUnit": 0.7,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "radiant-barrier",
+      "name": "Radiant Barrier",
+      "category": "Insulation",
+      "unitPrice": 0.3,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.15,
+        "high": 0.5
+      },
+      "laborCostPerUnit": 0.4,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "hardwood-flooring",
+      "name": "Hardwood Flooring (Oak)",
+      "category": "Flooring",
+      "unitPrice": 6.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 4,
+        "high": 12
+      },
+      "laborCostPerUnit": 4.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "engineered-hardwood",
+      "name": "Engineered Hardwood Flooring",
+      "category": "Flooring",
+      "unitPrice": 5.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 10
+      },
+      "laborCostPerUnit": 3.5,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "luxury-vinyl-plank",
+      "name": "Luxury Vinyl Plank (LVP)",
+      "category": "Flooring",
+      "unitPrice": 3.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2,
+        "high": 7
+      },
+      "laborCostPerUnit": 2.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "laminate-flooring",
+      "name": "Laminate Flooring",
+      "category": "Flooring",
+      "unitPrice": 2.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1,
+        "high": 5
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "ceramic-tile",
+      "name": "Ceramic Tile",
+      "category": "Flooring",
+      "unitPrice": 3,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1,
+        "high": 8
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "porcelain-tile",
+      "name": "Porcelain Tile",
+      "category": "Flooring",
+      "unitPrice": 5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 12
+      },
+      "laborCostPerUnit": 7,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "carpet-flooring",
+      "name": "Carpet Flooring",
+      "category": "Flooring",
+      "unitPrice": 3,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1.5,
+        "high": 8
+      },
+      "laborCostPerUnit": 1.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 10
+    },
+    {
+      "slug": "natural-stone",
+      "name": "Natural Stone Flooring",
+      "category": "Flooring",
+      "unitPrice": 12,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 5,
+        "high": 30
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "standard-drywall",
+      "name": "Standard Drywall (Gypsum Board)",
+      "category": "Drywall",
+      "unitPrice": 14,
+      "unit": "sheet (4x8)",
+      "priceRange": {
+        "low": 10,
+        "high": 20
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "moisture-resistant-drywall",
+      "name": "Moisture-Resistant Drywall (Green Board)",
+      "category": "Drywall",
+      "unitPrice": 18,
+      "unit": "sheet (4x8)",
+      "priceRange": {
+        "low": 14,
+        "high": 25
+      },
+      "laborCostPerUnit": 12,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "fire-resistant-drywall",
+      "name": "Fire-Resistant Drywall (Type X)",
+      "category": "Drywall",
+      "unitPrice": 17,
+      "unit": "sheet (4x8)",
+      "priceRange": {
+        "low": 13,
+        "high": 24
+      },
+      "laborCostPerUnit": 11,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "soundproof-drywall",
+      "name": "Soundproof Drywall",
+      "category": "Drywall",
+      "unitPrice": 50,
+      "unit": "sheet (4x8)",
+      "priceRange": {
+        "low": 35,
+        "high": 70
+      },
+      "laborCostPerUnit": 12,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "cement-board",
+      "name": "Cement Board (Backer Board)",
+      "category": "Drywall",
+      "unitPrice": 14,
+      "unit": "sheet (3x5)",
+      "priceRange": {
+        "low": 10,
+        "high": 20
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "pex-tubing",
+      "name": "PEX Tubing",
+      "category": "Plumbing",
+      "unitPrice": 0.75,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.4,
+        "high": 1.5
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "copper-pipe",
+      "name": "Copper Pipe",
+      "category": "Plumbing",
+      "unitPrice": 4.5,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 2.5,
+        "high": 8
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 70
+    },
+    {
+      "slug": "pvc-drain-pipe",
+      "name": "PVC Drain Pipe",
+      "category": "Plumbing",
+      "unitPrice": 1.8,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.8,
+        "high": 3.5
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 2,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "water-heater-tank",
+      "name": "Tank Water Heater",
+      "category": "Plumbing",
+      "unitPrice": 800,
+      "unit": "each",
+      "priceRange": {
+        "low": 400,
+        "high": 1500
+      },
+      "laborCostPerUnit": 600,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 2,
+      "durabilityYears": 12
+    },
+    {
+      "slug": "tankless-water-heater",
+      "name": "Tankless Water Heater",
+      "category": "Plumbing",
+      "unitPrice": 1500,
+      "unit": "each",
+      "priceRange": {
+        "low": 800,
+        "high": 3000
+      },
+      "laborCostPerUnit": 1500,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 4,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "sump-pump",
+      "name": "Sump Pump",
+      "category": "Plumbing",
+      "unitPrice": 250,
+      "unit": "each",
+      "priceRange": {
+        "low": 100,
+        "high": 500
+      },
+      "laborCostPerUnit": 500,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 3,
+      "durabilityYears": 10
+    },
+    {
+      "slug": "romex-wire-14-2",
+      "name": "Romex Wire (14/2 NM-B)",
+      "category": "Electrical",
+      "unitPrice": 0.45,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.3,
+        "high": 0.7
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "romex-wire-12-2",
+      "name": "Romex Wire (12/2 NM-B)",
+      "category": "Electrical",
+      "unitPrice": 0.65,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.45,
+        "high": 1
+      },
+      "laborCostPerUnit": 4.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "electrical-panel",
+      "name": "Electrical Panel (Breaker Box)",
+      "category": "Electrical",
+      "unitPrice": 600,
+      "unit": "each",
+      "priceRange": {
+        "low": 300,
+        "high": 1500
+      },
+      "laborCostPerUnit": 1500,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "gfci-outlet",
+      "name": "GFCI Outlet",
+      "category": "Electrical",
+      "unitPrice": 18,
+      "unit": "each",
+      "priceRange": {
+        "low": 12,
+        "high": 30
+      },
+      "laborCostPerUnit": 75,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 3,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "led-recessed-lighting",
+      "name": "LED Recessed Lighting",
+      "category": "Electrical",
+      "unitPrice": 25,
+      "unit": "each",
+      "priceRange": {
+        "low": 12,
+        "high": 50
+      },
+      "laborCostPerUnit": 85,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 5,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "ceiling-fan",
+      "name": "Ceiling Fan",
+      "category": "Electrical",
+      "unitPrice": 150,
+      "unit": "each",
+      "priceRange": {
+        "low": 60,
+        "high": 400
+      },
+      "laborCostPerUnit": 200,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 4,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "interior-latex-paint",
+      "name": "Interior Latex Paint",
+      "category": "Paint",
+      "unitPrice": 35,
+      "unit": "gallon",
+      "priceRange": {
+        "low": 20,
+        "high": 55
+      },
+      "laborCostPerUnit": 25,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 8
+    },
+    {
+      "slug": "interior-paint-premium",
+      "name": "Premium Interior Paint",
+      "category": "Paint",
+      "unitPrice": 55,
+      "unit": "gallon",
+      "priceRange": {
+        "low": 40,
+        "high": 80
+      },
+      "laborCostPerUnit": 25,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 12
+    },
+    {
+      "slug": "exterior-latex-paint",
+      "name": "Exterior Latex Paint",
+      "category": "Paint",
+      "unitPrice": 45,
+      "unit": "gallon",
+      "priceRange": {
+        "low": 30,
+        "high": 70
+      },
+      "laborCostPerUnit": 30,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 10
+    },
+    {
+      "slug": "primer-sealer",
+      "name": "Primer/Sealer",
+      "category": "Paint",
+      "unitPrice": 25,
+      "unit": "gallon",
+      "priceRange": {
+        "low": 15,
+        "high": 40
+      },
+      "laborCostPerUnit": 20,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 8
+    },
+    {
+      "slug": "exterior-stain",
+      "name": "Exterior Wood Stain",
+      "category": "Paint",
+      "unitPrice": 40,
+      "unit": "gallon",
+      "priceRange": {
+        "low": 25,
+        "high": 60
+      },
+      "laborCostPerUnit": 20,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 5
+    },
+    {
+      "slug": "deck-sealant",
+      "name": "Deck Sealant/Waterproofer",
+      "category": "Paint",
+      "unitPrice": 30,
+      "unit": "gallon",
+      "priceRange": {
+        "low": 18,
+        "high": 50
+      },
+      "laborCostPerUnit": 15,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 3
+    },
+    {
+      "slug": "brick-standard",
+      "name": "Standard Brick",
+      "category": "Masonry",
+      "unitPrice": 0.8,
+      "unit": "each",
+      "priceRange": {
+        "low": 0.45,
+        "high": 1.5
+      },
+      "laborCostPerUnit": 1.2,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "brick-veneer",
+      "name": "Thin Brick Veneer",
+      "category": "Masonry",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 5,
+        "high": 14
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "stone-veneer",
+      "name": "Manufactured Stone Veneer",
+      "category": "Masonry",
+      "unitPrice": 10,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 6,
+        "high": 18
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "mortar-mix",
+      "name": "Mortar Mix (Type S)",
+      "category": "Masonry",
+      "unitPrice": 6,
+      "unit": "80-lb bag",
+      "priceRange": {
+        "low": 4,
+        "high": 9
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "pavers",
+      "name": "Concrete Pavers",
+      "category": "Masonry",
+      "unitPrice": 4,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2,
+        "high": 8
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "stucco",
+      "name": "Stucco (Traditional)",
+      "category": "Masonry",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 5,
+        "high": 12
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "vinyl-siding",
+      "name": "Vinyl Siding",
+      "category": "Siding",
+      "unitPrice": 3.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2,
+        "high": 6
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "fiber-cement-siding",
+      "name": "Fiber Cement Siding (HardiePlank)",
+      "category": "Siding",
+      "unitPrice": 5.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3.5,
+        "high": 9
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "wood-siding",
+      "name": "Wood Siding (Clapboard)",
+      "category": "Siding",
+      "unitPrice": 7,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 4,
+        "high": 12
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "engineered-wood-siding",
+      "name": "Engineered Wood Siding (LP SmartSide)",
+      "category": "Siding",
+      "unitPrice": 4.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 7
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "composite-decking",
+      "name": "Composite Decking",
+      "category": "Siding",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 4,
+        "high": 14
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "zip-system-sheathing",
+      "name": "ZIP System Sheathing",
+      "category": "Siding",
+      "unitPrice": 1.4,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1,
+        "high": 2
+      },
+      "laborCostPerUnit": 0.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "framing-nails",
+      "name": "Framing Nails",
+      "category": "Fasteners",
+      "unitPrice": 55,
+      "unit": "box (2,500 ct)",
+      "priceRange": {
+        "low": 35,
+        "high": 80
+      },
+      "laborCostPerUnit": 0.01,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "deck-screws",
+      "name": "Deck Screws",
+      "category": "Fasteners",
+      "unitPrice": 45,
+      "unit": "box (1,000 ct)",
+      "priceRange": {
+        "low": 25,
+        "high": 70
+      },
+      "laborCostPerUnit": 0.02,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "drywall-screws",
+      "name": "Drywall Screws",
+      "category": "Fasteners",
+      "unitPrice": 12,
+      "unit": "box (1,000 ct)",
+      "priceRange": {
+        "low": 8,
+        "high": 20
+      },
+      "laborCostPerUnit": 0.01,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "concrete-anchors",
+      "name": "Concrete Anchors",
+      "category": "Fasteners",
+      "unitPrice": 1.5,
+      "unit": "each",
+      "priceRange": {
+        "low": 0.5,
+        "high": 4
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "construction-adhesive",
+      "name": "Construction Adhesive",
+      "category": "Fasteners",
+      "unitPrice": 5.5,
+      "unit": "tube (28 oz)",
+      "priceRange": {
+        "low": 3.5,
+        "high": 9
+      },
+      "laborCostPerUnit": 0.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "door-hinges",
+      "name": "Door Hinges",
+      "category": "Hardware",
+      "unitPrice": 4.5,
+      "unit": "each",
+      "priceRange": {
+        "low": 2,
+        "high": 12
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "door-lockset",
+      "name": "Door Lockset (Entry)",
+      "category": "Hardware",
+      "unitPrice": 45,
+      "unit": "each",
+      "priceRange": {
+        "low": 20,
+        "high": 150
+      },
+      "laborCostPerUnit": 60,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "cabinet-hardware",
+      "name": "Cabinet Pulls and Knobs",
+      "category": "Hardware",
+      "unitPrice": 5,
+      "unit": "each",
+      "priceRange": {
+        "low": 1.5,
+        "high": 15
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "garage-door",
+      "name": "Garage Door",
+      "category": "Hardware",
+      "unitPrice": 1200,
+      "unit": "each",
+      "priceRange": {
+        "low": 600,
+        "high": 3500
+      },
+      "laborCostPerUnit": 800,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 3,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "window-unit",
+      "name": "Replacement Window",
+      "category": "Hardware",
+      "unitPrice": 350,
+      "unit": "each",
+      "priceRange": {
+        "low": 150,
+        "high": 800
+      },
+      "laborCostPerUnit": 200,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 4,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "glulam-beam",
+      "name": "Glulam Beam",
+      "category": "Lumber",
+      "unitPrice": 18,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 10,
+        "high": 35
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "house-wrap",
+      "name": "House Wrap (WRB)",
+      "category": "Siding",
+      "unitPrice": 0.15,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.08,
+        "high": 0.25
+      },
+      "laborCostPerUnit": 0.2,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "gutters-aluminum",
+      "name": "Aluminum Gutters",
+      "category": "Roofing",
+      "unitPrice": 4,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 2.5,
+        "high": 7
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "thin-set-mortar",
+      "name": "Thin-Set Mortar",
+      "category": "Masonry",
+      "unitPrice": 18,
+      "unit": "50-lb bag",
+      "priceRange": {
+        "low": 12,
+        "high": 28
+      },
+      "laborCostPerUnit": 1.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "grout",
+      "name": "Tile Grout",
+      "category": "Masonry",
+      "unitPrice": 15,
+      "unit": "25-lb bag",
+      "priceRange": {
+        "low": 8,
+        "high": 25
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "cpvc-pipe",
+      "name": "CPVC Pipe",
+      "category": "Plumbing",
+      "unitPrice": 1.2,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.7,
+        "high": 2
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "eps-foam-board",
+      "name": "EPS Foam Board Insulation",
+      "category": "Insulation",
+      "unitPrice": 0.35,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.2,
+        "high": 0.6
+      },
+      "laborCostPerUnit": 0.35,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "hurricane-ties",
+      "name": "Hurricane Ties (Framing Connectors)",
+      "category": "Fasteners",
+      "unitPrice": 1.5,
+      "unit": "each",
+      "priceRange": {
+        "low": 0.8,
+        "high": 3
+      },
+      "laborCostPerUnit": 1,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "poured-concrete-wall",
+      "name": "Poured Concrete Foundation Wall",
+      "category": "Concrete",
+      "unitPrice": 18,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 12,
+        "high": 28
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 3,
+      "sustainabilityRating": 3,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "aluminum-siding",
+      "name": "Aluminum Siding",
+      "category": "Siding",
+      "unitPrice": 4.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 7
+      },
+      "laborCostPerUnit": 3.5,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "galvanized-steel-sheet",
+      "name": "Galvanized Steel Sheet",
+      "category": "Steel",
+      "unitPrice": 3.2,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2,
+        "high": 5
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "wrought-iron-railing",
+      "name": "Wrought Iron Railing",
+      "category": "Hardware",
+      "unitPrice": 65,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 40,
+        "high": 100
+      },
+      "laborCostPerUnit": 35,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "zinc-roofing-panel",
+      "name": "Zinc Roofing Panel",
+      "category": "Roofing",
+      "unitPrice": 14,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 10,
+        "high": 20
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 5,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "bronze-hardware",
+      "name": "Bronze Hardware",
+      "category": "Hardware",
+      "unitPrice": 28,
+      "unit": "piece",
+      "priceRange": {
+        "low": 12,
+        "high": 55
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 2,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "stainless-steel-fasteners",
+      "name": "Stainless Steel Fasteners",
+      "category": "Fasteners",
+      "unitPrice": 0.35,
+      "unit": "piece",
+      "priceRange": {
+        "low": 0.1,
+        "high": 1.5
+      },
+      "laborCostPerUnit": 0.15,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 80
+    },
+    {
+      "slug": "steel-rebar",
+      "name": "Steel Rebar",
+      "category": "Steel",
+      "unitPrice": 0.75,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.45,
+        "high": 1.2
+      },
+      "laborCostPerUnit": 0.5,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "steel-beam-w-flange",
+      "name": "Steel W-Flange Beam",
+      "category": "Steel",
+      "unitPrice": 2.8,
+      "unit": "pound",
+      "priceRange": {
+        "low": 1.8,
+        "high": 4
+      },
+      "laborCostPerUnit": 1.5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "cedar-shingle",
+      "name": "Cedar Shingle",
+      "category": "Roofing",
+      "unitPrice": 3.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2.5,
+        "high": 5.5
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "redwood-decking",
+      "name": "Redwood Decking",
+      "category": "Lumber",
+      "unitPrice": 9.5,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 7,
+        "high": 14
+      },
+      "laborCostPerUnit": 3.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "bamboo-flooring",
+      "name": "Bamboo Flooring",
+      "category": "Flooring",
+      "unitPrice": 4.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2.5,
+        "high": 8
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 5,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "walnut-hardwood",
+      "name": "Walnut Hardwood",
+      "category": "Flooring",
+      "unitPrice": 11,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 8,
+        "high": 16
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "maple-hardwood",
+      "name": "Maple Hardwood",
+      "category": "Flooring",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 5.5,
+        "high": 12
+      },
+      "laborCostPerUnit": 3.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "pine-lumber",
+      "name": "Pine Lumber",
+      "category": "Lumber",
+      "unitPrice": 3.5,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 2,
+        "high": 5.5
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 12
+    },
+    {
+      "slug": "birch-plywood",
+      "name": "Birch Plywood",
+      "category": "Lumber",
+      "unitPrice": 65,
+      "unit": "sheet (4×8)",
+      "priceRange": {
+        "low": 45,
+        "high": 95
+      },
+      "laborCostPerUnit": 15,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "teak-outdoor-lumber",
+      "name": "Teak Outdoor Lumber",
+      "category": "Lumber",
+      "unitPrice": 25,
+      "unit": "board foot",
+      "priceRange": {
+        "low": 18,
+        "high": 40
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "white-oak-flooring",
+      "name": "White Oak Flooring",
+      "category": "Flooring",
+      "unitPrice": 9,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 6,
+        "high": 14
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "bluestone-paver",
+      "name": "Bluestone Paver",
+      "category": "Masonry",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 5,
+        "high": 14
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "travertine-tile",
+      "name": "Travertine Tile",
+      "category": "Flooring",
+      "unitPrice": 6,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 12
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "quartz-countertop",
+      "name": "Quartz Countertop",
+      "category": "Masonry",
+      "unitPrice": 75,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 50,
+        "high": 120
+      },
+      "laborCostPerUnit": 25,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "soapstone-slab",
+      "name": "Soapstone Slab",
+      "category": "Masonry",
+      "unitPrice": 85,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 60,
+        "high": 120
+      },
+      "laborCostPerUnit": 30,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "slate-tile",
+      "name": "Slate Tile",
+      "category": "Flooring",
+      "unitPrice": 5.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3.5,
+        "high": 10
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 12,
+      "sustainabilityRating": 4,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "fieldstone-veneer",
+      "name": "Fieldstone Veneer",
+      "category": "Masonry",
+      "unitPrice": 12,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 8,
+        "high": 18
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 5,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "river-rock",
+      "name": "River Rock",
+      "category": "Masonry",
+      "unitPrice": 45,
+      "unit": "ton",
+      "priceRange": {
+        "low": 25,
+        "high": 75
+      },
+      "laborCostPerUnit": 25,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "crushed-limestone",
+      "name": "Crushed Limestone",
+      "category": "Masonry",
+      "unitPrice": 35,
+      "unit": "ton",
+      "priceRange": {
+        "low": 20,
+        "high": 55
+      },
+      "laborCostPerUnit": 15,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "fire-brick",
+      "name": "Fire Brick",
+      "category": "Masonry",
+      "unitPrice": 3.5,
+      "unit": "piece",
+      "priceRange": {
+        "low": 2,
+        "high": 6
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "cinder-block",
+      "name": "Cinder Block (CMU)",
+      "category": "Concrete",
+      "unitPrice": 2.2,
+      "unit": "block",
+      "priceRange": {
+        "low": 1.5,
+        "high": 3.5
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "paving-stone",
+      "name": "Paving Stone (Interlocking)",
+      "category": "Masonry",
+      "unitPrice": 5.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3.5,
+        "high": 9
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "precast-concrete-panel",
+      "name": "Precast Concrete Panel",
+      "category": "Concrete",
+      "unitPrice": 18,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 12,
+        "high": 28
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 3,
+      "sustainabilityRating": 3,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "mortar-type-s",
+      "name": "Mortar Type S",
+      "category": "Masonry",
+      "unitPrice": 12,
+      "unit": "80-lb bag",
+      "priceRange": {
+        "low": 8,
+        "high": 16
+      },
+      "laborCostPerUnit": 15,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "rubber-roofing-epdm",
+      "name": "Rubber Roofing (EPDM)",
+      "category": "Roofing",
+      "unitPrice": 4.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 7
+      },
+      "laborCostPerUnit": 3.5,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "tpo-membrane",
+      "name": "TPO Membrane",
+      "category": "Roofing",
+      "unitPrice": 5.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3.5,
+        "high": 8
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "composite-shingle",
+      "name": "Composite Shingle",
+      "category": "Roofing",
+      "unitPrice": 4.8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3.5,
+        "high": 7.5
+      },
+      "laborCostPerUnit": 3.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "solar-shingle",
+      "name": "Solar Shingle (BIPV)",
+      "category": "Roofing",
+      "unitPrice": 22,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 15,
+        "high": 30
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "slate-roofing",
+      "name": "Natural Slate Roofing",
+      "category": "Roofing",
+      "unitPrice": 12,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 8,
+        "high": 20
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 15,
+      "sustainabilityRating": 5,
+      "durabilityYears": 150
+    },
+    {
+      "slug": "cellulose-insulation",
+      "name": "Cellulose Insulation",
+      "category": "Insulation",
+      "unitPrice": 1.2,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.8,
+        "high": 1.8
+      },
+      "laborCostPerUnit": 0.8,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "spray-foam-insulation",
+      "name": "Spray Foam Insulation (Hybrid)",
+      "category": "Insulation",
+      "unitPrice": 1.8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1.2,
+        "high": 2.8
+      },
+      "laborCostPerUnit": 1.5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 2,
+      "durabilityYears": 80
+    },
+    {
+      "slug": "rockwool-board",
+      "name": "Rockwool Board (Exterior CI)",
+      "category": "Insulation",
+      "unitPrice": 2.2,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1.5,
+        "high": 3.5
+      },
+      "laborCostPerUnit": 1.5,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "epoxy-coating",
+      "name": "Epoxy Floor Coating",
+      "category": "Paint",
+      "unitPrice": 3.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2,
+        "high": 6
+      },
+      "laborCostPerUnit": 2.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "polyurethane-sealant",
+      "name": "Polyurethane Sealant",
+      "category": "Paint",
+      "unitPrice": 8.5,
+      "unit": "10-oz tube",
+      "priceRange": {
+        "low": 5,
+        "high": 14
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "waterproofing-membrane",
+      "name": "Waterproofing Membrane",
+      "category": "Roofing",
+      "unitPrice": 3.8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2.5,
+        "high": 6
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "pvc-pipe-schedule-40",
+      "name": "PVC Pipe Schedule 40",
+      "category": "Plumbing",
+      "unitPrice": 1.2,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.5,
+        "high": 3
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "pex-a-tubing",
+      "name": "PEX-A Tubing",
+      "category": "Plumbing",
+      "unitPrice": 1.8,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 1,
+        "high": 3
+      },
+      "laborCostPerUnit": 2.5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "fiber-cement-board",
+      "name": "Fiber Cement Board",
+      "category": "Siding",
+      "unitPrice": 4,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2.5,
+        "high": 6.5
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "osb-wall-sheathing",
+      "name": "OSB Wall Sheathing",
+      "category": "Lumber",
+      "unitPrice": 28,
+      "unit": "sheet (4×8)",
+      "priceRange": {
+        "low": 18,
+        "high": 42
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "vapor-barrier-film",
+      "name": "Vapor Barrier Film",
+      "category": "Insulation",
+      "unitPrice": 0.15,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.08,
+        "high": 0.3
+      },
+      "laborCostPerUnit": 0.2,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "concrete-fiber-mesh",
+      "name": "Concrete Fiber Mesh",
+      "category": "Concrete",
+      "unitPrice": 0.15,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.08,
+        "high": 0.3
+      },
+      "laborCostPerUnit": 0.05,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 75
+    },
+    {
+      "slug": "structural-screw",
+      "name": "Structural Screw",
+      "category": "Fasteners",
+      "unitPrice": 0.9,
+      "unit": "piece",
+      "priceRange": {
+        "low": 0.5,
+        "high": 2
+      },
+      "laborCostPerUnit": 0.3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "concrete-sealer",
+      "name": "Concrete Sealer",
+      "category": "Paint",
+      "unitPrice": 0.25,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.12,
+        "high": 0.5
+      },
+      "laborCostPerUnit": 0.3,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 2,
+      "durabilityYears": 5
+    },
+    {
+      "slug": "lvp-underlayment",
+      "name": "LVP Underlayment",
+      "category": "Flooring",
+      "unitPrice": 0.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.25,
+        "high": 1
+      },
+      "laborCostPerUnit": 0.2,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "stainless-steel-appliances",
+      "name": "Stainless Steel Kitchen Appliances",
+      "category": "Appliances",
+      "unitPrice": 0,
+      "unit": "set",
+      "priceRange": {
+        "low": 2000,
+        "high": 12000
+      },
+      "laborCostPerUnit": 500,
+      "wasteFactorPercent": 0,
+      "sustainabilityRating": 4,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "epoxy-garage-floor",
+      "name": "Epoxy Garage Floor Coating",
+      "category": "Flooring",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 4,
+        "high": 15
+      },
+      "laborCostPerUnit": 4,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "pex-piping",
+      "name": "PEX Piping",
+      "category": "Plumbing",
+      "unitPrice": 1.5,
+      "unit": "linear foot",
+      "priceRange": {
+        "low": 0.75,
+        "high": 3
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "tempered-glass",
+      "name": "Tempered Glass",
+      "category": "Glass",
+      "unitPrice": 25,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 15,
+        "high": 45
+      },
+      "laborCostPerUnit": 12,
+      "wasteFactorPercent": 3,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "standing-seam-metal-roofing",
+      "name": "Standing Seam Metal Roofing",
+      "category": "Roofing",
+      "unitPrice": 12,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 8,
+        "high": 18
+      },
+      "laborCostPerUnit": 6,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "polycarbonate-roofing",
+      "name": "Polycarbonate Roofing Panels",
+      "category": "Roofing",
+      "unitPrice": 5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 9
+      },
+      "laborCostPerUnit": 2.5,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "pvc-decking",
+      "name": "PVC Decking",
+      "category": "Decking",
+      "unitPrice": 10,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 7,
+        "high": 15
+      },
+      "laborCostPerUnit": 1,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "hdpe-pipe",
+      "name": "HDPE Pipe",
+      "category": "Plumbing",
+      "unitPrice": 2,
+      "unit": "linear ft",
+      "priceRange": {
+        "low": 1,
+        "high": 4
+      },
+      "laborCostPerUnit": 1,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 5,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "natural-stone-tile",
+      "name": "Natural Stone Tile",
+      "category": "Flooring",
+      "unitPrice": 10,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 5,
+        "high": 25
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "soapstone-countertop",
+      "name": "Soapstone Countertop",
+      "category": "Countertops",
+      "unitPrice": 70,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 50,
+        "high": 100
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "osb-oriented-strand-board",
+      "name": "OSB (Oriented Strand Board)",
+      "category": "Sheathing",
+      "unitPrice": 0.6,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.4,
+        "high": 1
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "gravel-crushed-stone",
+      "name": "Gravel (Crushed Stone)",
+      "category": "Landscaping",
+      "unitPrice": 40,
+      "unit": "ton",
+      "priceRange": {
+        "low": 25,
+        "high": 60
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 10
+    },
+    {
+      "slug": "wood-shingles",
+      "name": "Wood Shingles",
+      "category": "Roofing",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 5,
+        "high": 12
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 35
+    },
+    {
+      "slug": "drywall-gypsum-board",
+      "name": "Drywall (Gypsum Board)",
+      "category": "Wall & Ceiling",
+      "unitPrice": 0.5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.3,
+        "high": 1
+      },
+      "laborCostPerUnit": 0.3,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "rigid-foam-insulation",
+      "name": "Rigid Foam Insulation",
+      "category": "Insulation",
+      "unitPrice": 0.8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.4,
+        "high": 1.5
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "tpo-roofing-membrane",
+      "name": "TPO Roofing Membrane",
+      "category": "Roofing",
+      "unitPrice": 4,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 7
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "cork-flooring",
+      "name": "Cork Flooring",
+      "category": "Flooring",
+      "unitPrice": 5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 8
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "concrete-countertop-mix",
+      "name": "Concrete Countertop Mix",
+      "category": "Countertops",
+      "unitPrice": 75,
+      "unit": "bag",
+      "priceRange": {
+        "low": 50,
+        "high": 120
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "insulated-concrete-forms-icf",
+      "name": "Insulated Concrete Forms (ICF)",
+      "category": "Structural",
+      "unitPrice": 6,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 4,
+        "high": 9
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "zinc-roofing",
+      "name": "Zinc Roofing",
+      "category": "Roofing",
+      "unitPrice": 14,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 10,
+        "high": 20
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "laminate-countertop",
+      "name": "Laminate Countertop",
+      "category": "Countertops",
+      "unitPrice": 15,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 8,
+        "high": 25
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "pvc-pipe",
+      "name": "PVC Pipe",
+      "category": "Plumbing",
+      "unitPrice": 0.5,
+      "unit": "linear ft",
+      "priceRange": {
+        "low": 0.3,
+        "high": 1
+      },
+      "laborCostPerUnit": 0.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 3,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "galvanized-steel",
+      "name": "Galvanized Steel",
+      "category": "Structural",
+      "unitPrice": 3,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1,
+        "high": 5
+      },
+      "laborCostPerUnit": 1,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 5,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "flagstone",
+      "name": "Flagstone",
+      "category": "Landscaping",
+      "unitPrice": 12,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 6,
+        "high": 20
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "concrete-block-cmu",
+      "name": "Concrete Block (CMU)",
+      "category": "Masonry",
+      "unitPrice": 2,
+      "unit": "block",
+      "priceRange": {
+        "low": 1,
+        "high": 4
+      },
+      "laborCostPerUnit": 0.5,
+      "wasteFactorPercent": 10,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "cultured-marble",
+      "name": "Cultured Marble",
+      "category": "Countertops",
+      "unitPrice": 15,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 8,
+        "high": 25
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "hardboard-siding",
+      "name": "Hardboard Siding",
+      "category": "Siding",
+      "unitPrice": 2,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 1,
+        "high": 3
+      },
+      "laborCostPerUnit": 0.5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 25
+    },
+    {
+      "slug": "rubber-mulch",
+      "name": "Rubber Mulch",
+      "category": "Landscaping",
+      "unitPrice": 80,
+      "unit": "cubic yard",
+      "priceRange": {
+        "low": 50,
+        "high": 120
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 15
+    },
+    {
+      "slug": "bluestone-pavers",
+      "name": "Bluestone Pavers",
+      "category": "Landscaping",
+      "unitPrice": 15,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 10,
+        "high": 25
+      },
+      "laborCostPerUnit": 5,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "dimensional-lumber",
+      "name": "Dimensional Lumber",
+      "category": "Framing",
+      "unitPrice": 6,
+      "unit": "board ft",
+      "priceRange": {
+        "low": 3,
+        "high": 10
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "granite-countertop",
+      "name": "Granite Countertop",
+      "category": "Countertops",
+      "unitPrice": 60,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 40,
+        "high": 100
+      },
+      "laborCostPerUnit": 8,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "ductile-iron-pipe",
+      "name": "Ductile Iron Pipe",
+      "category": "Plumbing",
+      "unitPrice": 8,
+      "unit": "linear ft",
+      "priceRange": {
+        "low": 5,
+        "high": 15
+      },
+      "laborCostPerUnit": 3,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 100
+    },
+    {
+      "slug": "vinyl-plank-lvp",
+      "name": "Vinyl Plank (LVP)",
+      "category": "Flooring",
+      "unitPrice": 3,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2,
+        "high": 6
+      },
+      "laborCostPerUnit": 1,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "plywood",
+      "name": "Plywood",
+      "category": "Sheathing",
+      "unitPrice": 1,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 0.5,
+        "high": 2
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    },
+    {
+      "slug": "epdm-rubber-roofing",
+      "name": "EPDM Rubber Roofing",
+      "category": "Roofing",
+      "unitPrice": 5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 8
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "marble-countertop",
+      "name": "Marble Countertop",
+      "category": "Countertops",
+      "unitPrice": 75,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 50,
+        "high": 120
+      },
+      "laborCostPerUnit": 10,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 5,
+      "durabilityYears": 30
+    },
+    {
+      "slug": "reclaimed-wood",
+      "name": "Reclaimed Wood",
+      "category": "Specialty",
+      "unitPrice": 8,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 4,
+        "high": 20
+      },
+      "laborCostPerUnit": 0,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 4,
+      "durabilityYears": 50
+    },
+    {
+      "slug": "r-panel-metal-roofing",
+      "name": "R-Panel Metal Roofing",
+      "category": "Roofing",
+      "unitPrice": 5,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 3,
+        "high": 8
+      },
+      "laborCostPerUnit": 2,
+      "wasteFactorPercent": 5,
+      "sustainabilityRating": 3,
+      "durabilityYears": 40
+    },
+    {
+      "slug": "luxury-vinyl-tile-lvt",
+      "name": "Luxury Vinyl Tile (LVT)",
+      "category": "Flooring",
+      "unitPrice": 4,
+      "unit": "sq ft",
+      "priceRange": {
+        "low": 2,
+        "high": 7
+      },
+      "laborCostPerUnit": 1,
+      "wasteFactorPercent": 8,
+      "sustainabilityRating": 3,
+      "durabilityYears": 20
+    }
+  ]
+}
