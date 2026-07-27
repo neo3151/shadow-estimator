@@ -33,14 +33,12 @@ export async function POST(request) {
     const quadPadX = (maxQuadDim - quadWidth) / 2
     const quadPadY = (maxQuadDim - quadHeight) / 2
 
-    // 2. Crop into 4 quadrants AND pad them to perfect squares!
-    // This combines the resolution of Quadrants with the mathematical perfection of Square Padding to defeat Gemini's internal aspect ratio distortion.
+    // ==========================================
+    // PHASE 1: REGION PROPOSAL (QUADRANTS)
+    // ==========================================
     const tilePattern = join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-%d.png`)
     try {
-      // First crop into 4 repaged quadrants
       execSync(`convert "${imagePath}" -crop 50%x50% +repage "${tilePattern}"`)
-      
-      // Then pad each quadrant into a square
       for (let i = 0; i < 4; i++) {
         const tilePath = join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-${i}.png`)
         execSync(`convert "${tilePath}" -background white -gravity center -extent ${maxQuadDim}x${maxQuadDim} "${tilePath}"`)
@@ -51,10 +49,10 @@ export async function POST(request) {
     }
 
     const tiles = [
-      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-0.png`)), // Top-Left
-      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-1.png`)), // Top-Right
-      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-2.png`)), // Bottom-Left
-      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-3.png`))  // Bottom-Right
+      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-0.png`)),
+      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-1.png`)),
+      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-2.png`)),
+      readFileSync(join(tmpdir(), `takeoff-${session}`, `page-${page}-tile-3.png`))
     ]
 
     if (!process.env.GEMINI_API_KEY || process.env.GEMINI_API_KEY === 'YOUR_API_KEY_HERE') {
@@ -63,7 +61,7 @@ export async function POST(request) {
 
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
 
-    const prompt = `You are an expert plumbing estimator. I am providing you with 4 images representing the four quadrants of a floor plan in this exact order:
+    const prompt1 = `You are an expert plumbing estimator. I am providing you with 4 images representing the four quadrants of a floor plan in this exact order:
 1. Top-Left Quadrant (tile 0)
 2. Top-Right Quadrant (tile 1)
 3. Bottom-Left Quadrant (tile 2)
@@ -82,71 +80,154 @@ Use this exact JSON format:
 ]
 Output ONLY valid JSON without any markdown formatting or code blocks.`
 
-    const contents = [
-      prompt,
-      { inlineData: { data: tiles[0].toString('base64'), mimeType: 'image/png' } },
-      { inlineData: { data: tiles[1].toString('base64'), mimeType: 'image/png' } },
-      { inlineData: { data: tiles[2].toString('base64'), mimeType: 'image/png' } },
-      { inlineData: { data: tiles[3].toString('base64'), mimeType: 'image/png' } }
-    ]
-
     const config = { responseMimeType: 'application/json' }
-
-    const response = await ai.models.generateContent({
+    
+    const res1 = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
-      contents: contents,
+      contents: [
+        prompt1,
+        { inlineData: { data: tiles[0].toString('base64'), mimeType: 'image/png' } },
+        { inlineData: { data: tiles[1].toString('base64'), mimeType: 'image/png' } },
+        { inlineData: { data: tiles[2].toString('base64'), mimeType: 'image/png' } },
+        { inlineData: { data: tiles[3].toString('base64'), mimeType: 'image/png' } }
+      ],
       config
     })
 
-    const text = response.text || '[]'
+    const text1 = res1.text || '[]'
     let rawItems = []
     try {
-      rawItems = JSON.parse(text)
+      rawItems = JSON.parse(text1)
     } catch (e) {
-      console.error('Failed to parse Gemini output:', text)
+      console.error('Failed to parse Gemini Phase 1:', text1)
       rawItems = []
     }
 
-    // Mathematically translate square-padded quadrant coordinates back to global 0-1000 scale
-    const globalItems = rawItems.map(item => {
-      // 1. Convert Gemini's 0-1000 scale to absolute pixels on the PADDED square quadrant
+    const roughGlobalItems = rawItems.map(item => {
       const abs_x = (item.cx / 1000) * maxQuadDim
       const abs_y = (item.cy / 1000) * maxQuadDim
 
-      // 2. Subtract the padding to get absolute pixels on the ORIGINAL rectangular quadrant
       const orig_abs_x = abs_x - quadPadX
       const orig_abs_y = abs_y - quadPadY
 
-      // 3. Convert absolute quadrant pixels to normalized 0-1000 Quadrant Coordinates
       const final_quad_x = Math.max(0, Math.min(1000, (orig_abs_x / quadWidth) * 1000))
       const final_quad_y = Math.max(0, Math.min(1000, (orig_abs_y / quadHeight) * 1000))
 
-      // 4. Map the Quadrant 0-1000 coordinates to the Global 0-1000 coordinates
       let gx = final_quad_x / 2
       let gy = final_quad_y / 2
 
-      if (item.quadrant === 1) { // Top-Right
-        gx += 500
-      } else if (item.quadrant === 2) { // Bottom-Left
-        gy += 500
-      } else if (item.quadrant === 3) { // Bottom-Right
-        gx += 500
-        gy += 500
-      }
+      if (item.quadrant === 1) { gx += 500 }
+      else if (item.quadrant === 2) { gy += 500 }
+      else if (item.quadrant === 3) { gx += 500; gy += 500; }
 
-      // To seamlessly integrate with the frontend which expects xmin/xmax, we just create a tiny 10x10 bounding box around the center point.
+      // We need absolute pixels for cropping in Phase 2
+      const abs_gx = (gx / 1000) * globalWidth
+      const abs_gy = (gy / 1000) * globalHeight
+
       return {
         name: item.name,
-        xmin: gx - 5,
-        xmax: gx + 5,
-        ymin: gy - 5,
-        ymax: gy + 5
+        abs_gx: Math.round(abs_gx),
+        abs_gy: Math.round(abs_gy)
       }
-    }).filter(item => {
-       return (item.xmax > 0 && item.xmin < 1000 && item.ymax > 0 && item.ymin < 1000)
     })
 
-    return Response.json({ items: globalItems })
+    // ==========================================
+    // PHASE 2: SNIPER REFINEMENT (MICRO-CROPS)
+    // ==========================================
+    const cropSize = 150
+    const halfCrop = cropSize / 2
+
+    const refinePromises = roughGlobalItems.map(async (item, i) => {
+      // 1. Calculate safe crop bounds
+      let cropX = item.abs_gx - halfCrop
+      let cropY = item.abs_gy - halfCrop
+
+      // Constrain to image boundaries
+      if (cropX < 0) cropX = 0
+      if (cropY < 0) cropY = 0
+      if (cropX + cropSize > globalWidth) cropX = globalWidth - cropSize
+      if (cropY + cropSize > globalHeight) cropY = globalHeight - cropSize
+
+      const microCropPath = join(tmpdir(), `takeoff-${session}`, `page-${page}-micro-${i}.png`)
+      
+      try {
+        execSync(`convert "${imagePath}" -crop ${cropSize}x${cropSize}+${Math.round(cropX)}+${Math.round(cropY)} +repage "${microCropPath}"`)
+      } catch (err) {
+        console.error('Sniper crop error:', err)
+        // Fallback to rough coordinates if crop fails
+        return {
+          name: item.name,
+          xmin: (item.abs_gx / globalWidth) * 1000 - 5,
+          xmax: (item.abs_gx / globalWidth) * 1000 + 5,
+          ymin: (item.abs_gy / globalHeight) * 1000 - 5,
+          ymax: (item.abs_gy / globalHeight) * 1000 + 5
+        }
+      }
+
+      const microBuffer = readFileSync(microCropPath)
+      
+      const prompt2 = `This is a highly zoomed-in 150x150 pixel micro-crop of a ${item.name} from a plumbing floorplan. 
+Return the tight bounding box [ymin, xmin, ymax, xmax] of the ${item.name}'s black ink symbol. 
+Use a 0-1000 scale relative to this 150x150 image. Wrap tightly around the ink.
+
+Use this exact JSON format:
+{ "ymin": 200, "xmin": 200, "ymax": 800, "xmax": 800 }
+Output ONLY valid JSON without any markdown formatting or code blocks.`
+
+      try {
+        const res2 = await ai.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: [
+            prompt2,
+            { inlineData: { data: microBuffer.toString('base64'), mimeType: 'image/png' } }
+          ],
+          config
+        })
+        
+        let microRes = JSON.parse(res2.text || '{}')
+        if (microRes.xmin == null || microRes.xmax == null || microRes.ymin == null || microRes.ymax == null) {
+          throw new Error("Missing bounding box coordinates")
+        }
+
+        const micro_cx = (microRes.xmin + microRes.xmax) / 2
+        const micro_cy = (microRes.ymin + microRes.ymax) / 2
+
+        // Convert the 0-1000 micro coordinates to absolute micro pixels
+        const micro_abs_x = (micro_cx / 1000) * cropSize
+        const micro_abs_y = (micro_cy / 1000) * cropSize
+
+        // Add the micro offset to the global crop anchor
+        const refined_abs_gx = cropX + micro_abs_x
+        const refined_abs_gy = cropY + micro_abs_y
+
+        // Convert refined absolute pixels back to global 0-1000 scale for the frontend
+        const final_gx = (refined_abs_gx / globalWidth) * 1000
+        const final_gy = (refined_abs_gy / globalHeight) * 1000
+
+        return {
+          name: item.name,
+          xmin: final_gx - 5,
+          xmax: final_gx + 5,
+          ymin: final_gy - 5,
+          ymax: final_gy + 5
+        }
+
+      } catch (e) {
+        console.error('Sniper inference failed for item:', item.name, e)
+        // Fallback to rough coordinates
+        return {
+          name: item.name,
+          xmin: (item.abs_gx / globalWidth) * 1000 - 5,
+          xmax: (item.abs_gx / globalWidth) * 1000 + 5,
+          ymin: (item.abs_gy / globalHeight) * 1000 - 5,
+          ymax: (item.abs_gy / globalHeight) * 1000 + 5
+        }
+      }
+    })
+
+    const finalItems = await Promise.all(refinePromises)
+
+    return Response.json({ items: finalItems })
 
   } catch (err) {
     console.error('AutoScan Error:', err)
