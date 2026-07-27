@@ -132,100 +132,134 @@ Output ONLY valid JSON without any markdown formatting or code blocks.`
     })
 
     // ==========================================
-    // PHASE 2: SNIPER REFINEMENT (MICRO-CROPS)
+    // PHASE 2: SNIPER REFINEMENT (BATCHED)
     // ==========================================
     const cropSize = 150
     const halfCrop = cropSize / 2
 
-    const refinePromises = roughGlobalItems.map(async (item, i) => {
-      // 1. Calculate safe crop bounds
+    // Generate all micro crops
+    const microCrops = []
+    for (let i = 0; i < roughGlobalItems.length; i++) {
+      const item = roughGlobalItems[i]
       let cropX = item.abs_gx - halfCrop
       let cropY = item.abs_gy - halfCrop
 
-      // Constrain to image boundaries
       if (cropX < 0) cropX = 0
       if (cropY < 0) cropY = 0
       if (cropX + cropSize > globalWidth) cropX = globalWidth - cropSize
       if (cropY + cropSize > globalHeight) cropY = globalHeight - cropSize
 
       const microCropPath = join(tmpdir(), `takeoff-${session}`, `page-${page}-micro-${i}.png`)
-      
       try {
         execSync(`convert "${imagePath}" -crop ${cropSize}x${cropSize}+${Math.round(cropX)}+${Math.round(cropY)} +repage "${microCropPath}"`)
+        const buffer = readFileSync(microCropPath)
+        microCrops.push({ index: i, name: item.name, buffer, cropX, cropY })
       } catch (err) {
-        console.error('Sniper crop error:', err)
-        // Fallback to rough coordinates if crop fails
-        return {
-          name: item.name,
-          xmin: (item.abs_gx / globalWidth) * 1000 - 5,
-          xmax: (item.abs_gx / globalWidth) * 1000 + 5,
-          ymin: (item.abs_gy / globalHeight) * 1000 - 5,
-          ymax: (item.abs_gy / globalHeight) * 1000 + 5
-        }
+        console.error('Sniper crop error for', item.name, err)
+        microCrops.push({ index: i, name: item.name, error: true, cropX, cropY })
       }
+    }
 
-      const microBuffer = readFileSync(microCropPath)
-      
-      const prompt2 = `This is a highly zoomed-in 150x150 pixel micro-crop of a ${item.name} from a plumbing floorplan. 
-Return the tight bounding box [ymin, xmin, ymax, xmax] of the ${item.name}'s black ink symbol. 
-Use a 0-1000 scale relative to this 150x150 image. Wrap tightly around the ink.
+    const validCrops = microCrops.filter(c => !c.error)
+    
+    let finalItems = []
 
-Use this exact JSON format:
-{ "ymin": 200, "xmin": 200, "ymax": 800, "xmax": 800 }
-Output ONLY valid JSON without any markdown formatting or code blocks.`
+    if (validCrops.length > 0) {
+      let prompt2 = `You are analyzing ${validCrops.length} highly zoomed-in 150x150 pixel micro-crops of plumbing fixtures.\n\n`
+      validCrops.forEach((c, idx) => {
+        prompt2 += `Image ${idx}: ${c.name}\n`
+      })
+      prompt2 += `\nFor each image, return the tight bounding box [ymin, xmin, ymax, xmax] of the black ink symbol. Use a 0-1000 scale relative to the 150x150 image. Wrap tightly around the ink.\n\nUse this exact JSON format:\n[\n  { "imageIndex": 0, "ymin": 200, "xmin": 200, "ymax": 800, "xmax": 800 }\n]\nOutput ONLY valid JSON.`
+
+      const contents2 = [prompt2]
+      validCrops.forEach(c => {
+        contents2.push({ inlineData: { data: c.buffer.toString('base64'), mimeType: 'image/png' } })
+      })
 
       try {
         const res2 = await ai.models.generateContent({
           model: 'gemini-2.5-flash',
-          contents: [
-            prompt2,
-            { inlineData: { data: microBuffer.toString('base64'), mimeType: 'image/png' } }
-          ],
+          contents: contents2,
           config
         })
-        
-        let microRes = JSON.parse(res2.text || '{}')
-        if (microRes.xmin == null || microRes.xmax == null || microRes.ymin == null || microRes.ymax == null) {
-          throw new Error("Missing bounding box coordinates")
+
+        const text2 = res2.text || '[]'
+        let microResults = JSON.parse(text2)
+        if (!Array.isArray(microResults)) microResults = [microResults]
+
+        // Map results
+        for (let i = 0; i < roughGlobalItems.length; i++) {
+          const rough = roughGlobalItems[i]
+          const cropData = microCrops[i]
+          
+          if (cropData.error) {
+            // Fallback
+            finalItems.push({
+              name: rough.name,
+              xmin: (rough.abs_gx / globalWidth) * 1000 - 5,
+              xmax: (rough.abs_gx / globalWidth) * 1000 + 5,
+              ymin: (rough.abs_gy / globalHeight) * 1000 - 5,
+              ymax: (rough.abs_gy / globalHeight) * 1000 + 5
+            })
+            continue
+          }
+
+          // Find index in validCrops array
+          const validIdx = validCrops.findIndex(c => c.index === i)
+          const result = microResults.find(r => r.imageIndex === validIdx)
+
+          if (!result || result.xmin == null || result.xmax == null || result.ymin == null || result.ymax == null) {
+            // Fallback
+            finalItems.push({
+              name: rough.name,
+              xmin: (rough.abs_gx / globalWidth) * 1000 - 5,
+              xmax: (rough.abs_gx / globalWidth) * 1000 + 5,
+              ymin: (rough.abs_gy / globalHeight) * 1000 - 5,
+              ymax: (rough.abs_gy / globalHeight) * 1000 + 5
+            })
+            continue
+          }
+
+          const micro_cx = (result.xmin + result.xmax) / 2
+          const micro_cy = (result.ymin + result.ymax) / 2
+
+          const micro_abs_x = (micro_cx / 1000) * cropSize
+          const micro_abs_y = (micro_cy / 1000) * cropSize
+
+          const refined_abs_gx = cropData.cropX + micro_abs_x
+          const refined_abs_gy = cropData.cropY + micro_abs_y
+
+          const final_gx = (refined_abs_gx / globalWidth) * 1000
+          const final_gy = (refined_abs_gy / globalHeight) * 1000
+
+          finalItems.push({
+            name: rough.name,
+            xmin: final_gx - 5,
+            xmax: final_gx + 5,
+            ymin: final_gy - 5,
+            ymax: final_gy + 5
+          })
         }
-
-        const micro_cx = (microRes.xmin + microRes.xmax) / 2
-        const micro_cy = (microRes.ymin + microRes.ymax) / 2
-
-        // Convert the 0-1000 micro coordinates to absolute micro pixels
-        const micro_abs_x = (micro_cx / 1000) * cropSize
-        const micro_abs_y = (micro_cy / 1000) * cropSize
-
-        // Add the micro offset to the global crop anchor
-        const refined_abs_gx = cropX + micro_abs_x
-        const refined_abs_gy = cropY + micro_abs_y
-
-        // Convert refined absolute pixels back to global 0-1000 scale for the frontend
-        const final_gx = (refined_abs_gx / globalWidth) * 1000
-        const final_gy = (refined_abs_gy / globalHeight) * 1000
-
-        return {
-          name: item.name,
-          xmin: final_gx - 5,
-          xmax: final_gx + 5,
-          ymin: final_gy - 5,
-          ymax: final_gy + 5
-        }
-
       } catch (e) {
-        console.error('Sniper inference failed for item:', item.name, e)
-        // Fallback to rough coordinates
-        return {
-          name: item.name,
-          xmin: (item.abs_gx / globalWidth) * 1000 - 5,
-          xmax: (item.abs_gx / globalWidth) * 1000 + 5,
-          ymin: (item.abs_gy / globalHeight) * 1000 - 5,
-          ymax: (item.abs_gy / globalHeight) * 1000 + 5
-        }
+        console.error('Batched Phase 2 failed:', e)
+        // Global Fallback
+        finalItems = roughGlobalItems.map(r => ({
+          name: r.name,
+          xmin: (r.abs_gx / globalWidth) * 1000 - 5,
+          xmax: (r.abs_gx / globalWidth) * 1000 + 5,
+          ymin: (r.abs_gy / globalHeight) * 1000 - 5,
+          ymax: (r.abs_gy / globalHeight) * 1000 + 5
+        }))
       }
-    })
-
-    const finalItems = await Promise.all(refinePromises)
+    } else {
+       finalItems = roughGlobalItems.map(r => ({
+          name: r.name,
+          xmin: (r.abs_gx / globalWidth) * 1000 - 5,
+          xmax: (r.abs_gx / globalWidth) * 1000 + 5,
+          ymin: (r.abs_gy / globalHeight) * 1000 - 5,
+          ymax: (r.abs_gy / globalHeight) * 1000 + 5
+       }))
+    }
 
     return Response.json({ items: finalItems })
 
