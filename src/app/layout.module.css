@@ -5,69 +5,161 @@
 }
 
 .sidebar {
-  width: 250px;
-  background-color: var(--panel-bg);
-  border-right: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
+  position: relative;
   z-index: 10;
-  transition: all 0.3s ease;
+  display: flex;
+  flex: 0 0 264px;
+  flex-direction: column;
+  width: 264px;
+  padding: 1rem;
+  overflow: hidden;
+  border-right: 1px solid var(--border-color);
+  background: linear-gradient(180deg, #211e1a 0%, #171512 100%);
+  box-shadow: 12px 0 32px rgba(0, 0, 0, 0.18);
+  transition: width 0.25s ease, flex-basis 0.25s ease, padding 0.25s ease;
+}
+
+.sidebar::after {
+  position: absolute;
+  right: -80px;
+  bottom: -100px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(245, 158, 11, 0.08);
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.sidebarCollapsed {
+  width: 78px;
+  flex-basis: 78px;
+  padding: 1rem 0.75rem;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+}
+
+.sidebarCollapsed .sidebarHeader {
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.menuButton {
+  display: inline-flex;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-color);
+  border-radius: 11px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.025);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.menuButton:hover {
+  color: var(--accent-primary);
+  border-color: rgba(245, 158, 11, 0.45);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  min-width: 0;
+  gap: 0.55rem;
+  color: var(--text-primary);
 }
 
-.logo span {
+.logoName {
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.logoName span {
   color: var(--accent-primary);
 }
 
 .nav {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .navItem {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  min-height: 46px;
+  gap: 0.8rem;
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  border-radius: 11px;
   color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebarCollapsed .navItem {
+  justify-content: center;
+  padding: 0.75rem;
 }
 
 .navItem:hover {
-  background-color: rgba(0,0,0,0.05);
   color: var(--text-primary);
-}
-
-:global(.dark-theme) .navItem:hover {
-  background-color: rgba(255,255,255,0.05);
+  border-color: var(--border-color);
+  background: rgba(255, 255, 255, 0.035);
+  transform: translateX(2px);
 }
 
 .navItemActive {
-  background-color: var(--accent-primary) !important;
-  color: white !important;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-}
-
-:global(.dark-theme) .navItemActive {
-  box-shadow: 0 4px 10px rgba(6, 182, 212, 0.3);
+  color: #ffd58a !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.18), rgba(245, 158, 11, 0.05)) !important;
+  box-shadow: inset 3px 0 0 var(--accent-primary), 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 .mainContent {
-  flex: 1;
-  overflow-y: auto;
   position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  background:
+    linear-gradient(rgba(245, 158, 11, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 158, 11, 0.018) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+@media (max-width: 640px) {
+  .sidebar {
+    width: 78px;
+    flex-basis: 78px;
+    padding: 1rem 0.75rem;
+  }
+
+  .sidebarExpanded {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 264px;
+    flex-basis: 264px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .sidebarExpanded + .mainContent {
+    margin-left: 78px;
+  }
 }

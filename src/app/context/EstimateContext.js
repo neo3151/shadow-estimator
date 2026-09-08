@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useState, useMemo } from 'react'
+import React, { createContext, useCallback, useContext, useState, useMemo } from 'react'
 import { TAX_RATE } from '../../lib/utils'
 
 const EstimateContext = createContext(null)
@@ -8,7 +8,7 @@ const EstimateContext = createContext(null)
 export function EstimateProvider({ children }) {
   const [items, setItems] = useState([])
   const [autoAccessories, setAutoAccessories] = useState(true)
-  const [category, setCategory] = useState('Plumbing')
+  const [category, setCategory] = useState('Electrical')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
 
@@ -136,6 +136,13 @@ export function EstimateProvider({ children }) {
   function clearItems() {
     setItems([])
   }
+
+  const hydrateEstimate = useCallback((snapshot = {}) => {
+    setItems(Array.isArray(snapshot.items) ? snapshot.items : [])
+    setCategory(snapshot.category || 'General')
+    setAutoAccessories(snapshot.autoAccessories !== false)
+    setMessage('')
+  }, [])
   
   function importTakeoff(importedItems) {
     const next = [...items, ...importedItems]
@@ -161,6 +168,7 @@ export function EstimateProvider({ children }) {
     handleToggleAuto,
     handleFileUpload,
     clearItems,
+    hydrateEstimate,
     importTakeoff,
     setMessage
   }

@@ -1,22 +1,43 @@
 .table {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 1rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.75rem;
 }
 
 .table th,
 .table td {
-  padding: 0.5rem;
+  padding: 0.7rem 0.65rem;
   border-bottom: 1px solid var(--border-color);
   color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .table thead tr {
-  background: var(--panel-bg);
+  background: #181511;
 }
 
 .table th {
+  color: var(--text-muted);
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-align: left;
+  text-transform: uppercase;
+}
+
+.table tbody tr {
+  transition: background 0.18s ease;
+}
+
+.table tbody tr:hover {
+  background: rgba(245, 158, 11, 0.045);
 }
 
 .number {
@@ -28,11 +49,50 @@
 }
 
 .cell {
-  padding: 0.5rem;
+  padding: 0.65rem;
+}
+
+.cell input {
+  width: 76px;
+  padding: 0.4rem 0.45rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  background: #151310;
+  font-size: 0.72rem;
+  text-align: right;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.cell input:hover,
+.cell input:focus {
+  border-color: rgba(245, 158, 11, 0.45);
+  background: #1d1915;
+}
+
+.cell button {
+  padding: 0.34rem 0.55rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 6px;
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.06);
+  font-size: 0.66rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.cell button:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.14);
 }
 
 .manual {
-  color: orange;
-  margin-left: 0.5rem;
-  font-size: 0.85rem;
+  margin-left: 0.45rem;
+  padding: 0.12rem 0.35rem;
+  border-radius: 999px;
+  color: #fdba74;
+  background: rgba(249, 115, 22, 0.09);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }

@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useState, useMemo } from 'react'
-import { Search, Box } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { useEstimate } from '../context/EstimateContext'
 import { itemMatchesTrade, formatCurrency } from '../../lib/utils'
+import CatalogProductImage from './CatalogProductImage'
 import styles from './catalog.module.css'
 
 const TRADES = [
@@ -43,7 +44,11 @@ export default function CatalogPage() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1>Materials Catalog</h1>
+        <div className={styles.headerCopy}>
+          <span>Resource library</span>
+          <h1>Materials Catalog</h1>
+          <p>Search sourced construction materials, labor data, and current pricing.</p>
+        </div>
         <div className={styles.searchBar}>
           <Search size={18} color="var(--text-secondary)" />
           <input 
@@ -75,20 +80,22 @@ export default function CatalogPage() {
           <div className={styles.grid}>
             {filteredCatalog.map(item => (
               <div key={item.id || item.item_name} className={styles.card}>
-                <div className={styles.badge}>In Stock</div>
-                <div className={styles.cardImagePlaceholder}>
-                  <Box size={40} opacity={0.5} />
+                <div className={`${styles.badge} ${item.price_status === 'priced' ? styles.priced : styles.needsPricing}`}>
+                  {item.price_status === 'priced' ? 'Priced' : 'Needs Pricing'}
                 </div>
+                <CatalogProductImage item={item} />
                 <h4 className={styles.cardTitle}>{item.item_name}</h4>
                 <p className={styles.cardDesc}>
                   {item.category} • {item.size || 'Standard Size'}
                   {item.id && <><br/>SKU: {String(item.id).substring(0,8)}</>}
+                  {item.source_name && <><br/>Source: {item.source_name}</>}
+                  {item.price_as_of && <><br/>As of: {item.price_as_of}</>}
                 </p>
                 
                 <div className={styles.cardFooter}>
                   <div className={styles.price}>
-                    {formatCurrency(item.estimated_price_usd)}
-                    <span className={styles.unit}>/{item.unit || 'ea'}</span>
+                    {item.price_status === 'priced' ? formatCurrency(item.estimated_price_usd) : 'Price unavailable'}
+                    {item.price_status === 'priced' && <span className={styles.unit}>/{item.unit || 'ea'}</span>}
                   </div>
                   <button 
                     className={styles.addButton}
@@ -97,7 +104,7 @@ export default function CatalogPage() {
                       // Optional: Show a tiny toast here, but updating context is enough for now
                     }}
                   >
-                    Add to Order
+                    Add to Estimate
                   </button>
                 </div>
               </div>

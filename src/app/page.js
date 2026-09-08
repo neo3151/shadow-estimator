@@ -1,49 +1,78 @@
 'use client'
 
 import Link from 'next/link'
-import { FileSpreadsheet, Box } from 'lucide-react'
+import { ArrowRight, Box, Database, FileSpreadsheet, Sparkles, Zap } from 'lucide-react'
 import { useEstimate } from './context/EstimateContext'
+import styles from './page.module.css'
 
 export default function Dashboard() {
   const { items } = useEstimate()
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Welcome to Shadow Estimator</h1>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', fontSize: '1.1rem' }}>
-        The professional trade estimating tool with smart dependencies.
-      </p>
-
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-        
-        <div className="glass" style={{ padding: '2rem', borderRadius: '12px', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ background: 'var(--accent-primary)', width: '48px', height: '48px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-            <FileSpreadsheet color="white" size={24} />
+    <div className={styles.container}>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <div className={styles.eyebrow}><Sparkles size={14} /> Dedicated Electrical Takeoff & Estimating</div>
+          <h1>From electrical blueprint to <span>build-ready estimate.</span></h1>
+          <p>Scan power & lighting plans, detect receptacles, switches & panel gear, calculate conduit footage, and price electrical bids in one focused workspace.</p>
+          <div className={styles.heroActions}>
+            <Link href="/estimate" className={styles.primaryAction}>Open Estimator <ArrowRight size={17} /></Link>
+            <Link href="/catalog" className={styles.secondaryAction}>Explore Catalog</Link>
           </div>
-          <h2 style={{ marginBottom: '0.5rem' }}>Current Estimate</h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', flex: 1 }}>
-            You have {items.length} items in your active estimate. 
-          </p>
-          <Link href="/estimate" style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: 'var(--accent-primary)', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '500', textAlign: 'center' }}>
-            Open Estimator
+        </div>
+        <div className={styles.heroVisual}>
+          <div className={styles.visualTopline}>
+            <span>Active workspace</span>
+            <span className={styles.liveBadge}>Ready</span>
+          </div>
+          <div className={styles.visualMetric}>
+            <span>Estimate items</span>
+            <strong>{items.length.toString().padStart(2, '0')}</strong>
+          </div>
+          <div className={styles.visualBars}>
+            <span style={{ '--bar-width': '78%' }} />
+            <span style={{ '--bar-width': '58%' }} />
+            <span style={{ '--bar-width': '88%' }} />
+          </div>
+          <div className={styles.visualFooter}><Zap size={15} /> Smart dependencies enabled</div>
+        </div>
+      </section>
+
+      <section className={styles.metrics}>
+        <div><Database size={18} /><strong>4,200+</strong><span>priced materials</span></div>
+        <div><Sparkles size={18} /><strong>AI-assisted</strong><span>plan takeoff</span></div>
+        <div><Zap size={18} /><strong>Automatic</strong><span>accessory rules</span></div>
+      </section>
+
+      <section className={styles.workspaceSection}>
+        <div className={styles.sectionHeading}>
+          <div>
+            <span>Workspace</span>
+            <h2>Pick up where you left off</h2>
+          </div>
+        </div>
+        <div className={styles.cardGrid}>
+          <Link href="/estimate" className={styles.workspaceCard}>
+            <div className={styles.cardIcon}><FileSpreadsheet size={22} /></div>
+            <div className={styles.cardContent}>
+              <span className={styles.cardKicker}>Live estimate</span>
+              <h3>Material Estimate</h3>
+              <p>{items.length ? `${items.length} items are ready to review and price.` : 'Upload a plan or start adding materials to build your estimate.'}</p>
+            </div>
+            <ArrowRight className={styles.cardArrow} size={19} />
+          </Link>
+
+          <Link href="/catalog" className={styles.workspaceCard}>
+            <div className={styles.cardIcon}><Box size={22} /></div>
+            <div className={styles.cardContent}>
+              <span className={styles.cardKicker}>Material intelligence</span>
+              <h3>Construction Catalog</h3>
+              <p>Search thousands of sourced materials with pricing, labor, size, and category data.</p>
+            </div>
+            <ArrowRight className={styles.cardArrow} size={19} />
           </Link>
         </div>
-
-        <div className="glass" style={{ padding: '2rem', borderRadius: '12px', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ background: '#10b981', width: '48px', height: '48px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-            <Box color="white" size={24} />
-          </div>
-          <h2 style={{ marginBottom: '0.5rem' }}>Materials Catalog</h2>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', flex: 1 }}>
-            Browse over 4,200 construction materials and add them to your estimate.
-          </p>
-          <Link href="/catalog" style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: '#10b981', color: 'white', borderRadius: '6px', textDecoration: 'none', fontWeight: '500', textAlign: 'center' }}>
-            Browse Catalog
-          </Link>
-        </div>
-
-      </div>
+      </section>
     </div>
   )
 }
-

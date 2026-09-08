@@ -6,6 +6,52 @@ const CATALOG = JSON.parse(readFileSync(join(process.cwd(), 'public/data/catalog
 
 const RULES = [
   {
+    category: 'Electrical',
+    test: /receptacle|outlet|gfci|duplex|quad/i,
+    deps: [
+      { name: '4 in. Square Box 1-1/2 in. Deep', size: '4 in. x 4 in. Metallic Steel J-Box', qty: 'main' },
+      { name: 'Single-Gang Mud Ring 1/2 in.', size: '4 in. Square to 1-Gang 1/2 in. Raised', qty: 'main' },
+      { name: '1-Gang Nylon Wallplate', size: 'Single Gang Duplex/Toggle Plate White', qty: 'main' },
+      { name: 'Wire Nut Connectors (Pack of 100)', size: 'Yellow / Red Wire Nuts #18 to #10 AWG', qty: 1 },
+    ],
+  },
+  {
+    category: 'Electrical',
+    test: /switch|dimmer|sensor|motion/i,
+    deps: [
+      { name: '4 in. Square Box 1-1/2 in. Deep', size: '4 in. x 4 in. Metallic Steel J-Box', qty: 'main' },
+      { name: 'Single-Gang Mud Ring 1/2 in.', size: '4 in. Square to 1-Gang 1/2 in. Raised', qty: 'main' },
+      { name: '1-Gang Nylon Wallplate', size: 'Single Gang Duplex/Toggle Plate White', qty: 'main' },
+      { name: 'Wire Nut Connectors (Pack of 100)', size: 'Yellow / Red Wire Nuts #18 to #10 AWG', qty: 1 },
+    ],
+  },
+  {
+    category: 'Electrical',
+    test: /troffer|fixture|high-bay|downlight|strip/i,
+    deps: [
+      { name: 'Junction / Pull Box (J-Box)', size: '8x8x4 inch NEMA 1 Steel J-Box', qty: 1 },
+      { name: 'Wire Nut Connectors (Pack of 100)', size: 'Yellow / Red Wire Nuts #18 to #10 AWG', qty: 1 },
+    ],
+  },
+  {
+    category: 'Electrical',
+    test: /emt|conduit|pvc conduit/i,
+    deps: [
+      { name: 'EMT Set-Screw Connector 3/4 in.', size: '3/4 in. Steel Connector (Box of 25)', qty: 1 },
+      { name: 'EMT Set-Screw Coupling 3/4 in.', size: '3/4 in. Steel Coupling (Box of 25)', qty: 1 },
+      { name: 'Conduit Strap 1-Hole 3/4 in.', size: '3/4 in. Malleable Iron Strap', qty: 2 },
+    ],
+  },
+  {
+    category: 'Electrical',
+    test: /panel|sub-panel|load center/i,
+    deps: [
+      { name: 'Grounding Rod & Clamp Kit', size: '5/8 in. x 8 ft Copper Bonded Rod + Clamp', qty: 1 },
+      { name: 'THHN Copper Wire #12 AWG', size: '#12 Stranded Copper THHN 500ft Spool', qty: 10 },
+      { name: 'Circuit Breaker 20A 1-Pole', size: '20 Amp 1-Pole 120V Standard Plug-on', qty: 4 },
+    ],
+  },
+  {
     category: 'Plumbing',
     test: /toilet/i,
     deps: [
@@ -13,56 +59,8 @@ const RULES = [
       { name: 'Toilet Bolts - Brass Pair', qty: 'main' },
       { name: 'Angle Stop Valve', size: '1/2 inch', qty: 'main' },
       { name: 'Braided Supply Line - 3/8 inch x 12 inch', qty: 'main' },
-    ],
-  },
-  {
-    category: 'Plumbing',
-    test: /water heater|tankless|indirect water heater|hybrid heat pump water heater/i,
-    deps: [
-      { name: 'Expansion Tank', size: '4.5 Gallon', qty: 'main' },
-      { name: 'Ball Valve - Brass Full Port', size: '3/4 inch', qty: 'main' },
-      { name: 'Dielectric Union', size: '3/4 inch', qty: 'main' },
-      { name: 'Flexible Braided Stainless Connector', size: '3/4 inch x 18 inch', qty: 'main' },
-      { name: 'Teflon Tape', size: '1/2 inch x 520 inch', qty: 'main' },
-    ],
-  },
-  {
-    category: 'Plumbing',
-    test: /sink|lavatory/i,
-    deps: [
-      { name: 'Faucet', qty: 'main' },
-      { name: 'Angle Stop Valve', size: '1/2 inch', qty: 'main' },
-      { name: 'Braided Supply Line - 3/8 inch x 12 inch', qty: 'main' },
-      { name: 'P-Trap - PVC', size: '1-1/2 inch', qty: 'main' },
-      { name: 'Silicone Caulk', qty: 'main' },
-    ],
-  },
-  {
-    category: 'Plumbing',
-    test: /copper pipe|copper tubing|copper/i,
-    deps: [
-      { name: 'Solder - Lead Free', size: '1 lb', qty: 1 },
-      { name: 'Flux - 4 oz', qty: 1 },
-      { name: '90 Degree Elbow - Copper', size: '1/2 inch', qty: 1 },
-    ],
-  },
-  {
-    category: 'Drywall',
-    test: /drywall|sheetrock/i,
-    deps: [
-      { name: 'Joint Tape', qty: 1 },
-      { name: 'Pre-Mixed Joint Compound', qty: 1 },
-      { name: 'Drywall Screws', qty: 1 },
-    ],
-  },
-  {
-    category: 'Paint',
-    test: /paint|primer/i,
-    deps: [
-      { name: 'Latex Primer', qty: 1 },
-      { name: 'Brushes', qty: 1 },
-      { name: 'Rollers', qty: 1 },
-      { name: 'Painters Tape', qty: 1 },
+      { name: 'Sanitary Tee - PVC Sch 40', size: '3 inch', qty: 'main' },
+      { name: 'Steel Stud Safety Protection Plate', size: '3 inch x 5 inch (16-Gauge)', qty: 'main' },
     ],
   },
 ]
@@ -86,6 +84,7 @@ function scoreMatch(item, query, sizeHint) {
     else if (size.includes(h) || h.includes(size)) score += 12
   }
 
+  if (score > 0 && item.price_status === 'priced') score += Number(item.source_priority) || 0
   return score
 }
 
@@ -93,6 +92,7 @@ function findCatalogItem(name, sizeHint = '') {
   let best = null
   let bestScore = 0
   for (const item of CATALOG) {
+    if (item.price_status === 'unpriced') continue
     const score = scoreMatch(item, name, sizeHint)
     if (score > bestScore) {
       bestScore = score
@@ -154,6 +154,13 @@ function enrichWithPricing(items) {
         size: match.size,
         unit: match.unit,
         category: match.category,
+        source: match.source,
+        sourceName: match.source_name,
+        priceAsOf: match.price_as_of,
+        priceConfidence: match.price_confidence,
+        priceMin: match.price_min_usd,
+        priceMax: match.price_max_usd,
+        productKey: match.product_key,
         price,
         labor,
         total: Number(it.qty || 1) * price,
@@ -173,15 +180,31 @@ function enrichWithPricing(items) {
   })
 }
 
+function consolidateItems(items) {
+  const map = new Map()
+  for (const it of items) {
+    const key = (it.name || '').trim().toLowerCase() + '|' + (it.size || '').trim().toLowerCase()
+    const qty = Number(it.qty) || 1
+    if (map.has(key)) {
+      map.get(key).qty += qty
+    } else {
+      map.set(key, { ...it, qty })
+    }
+  }
+  return [...map.values()]
+}
+
 export async function POST(request) {
   try {
     const body = await request.json()
     const rawItems = Array.isArray(body.items) ? body.items : []
     const autoAccessories = body.autoAccessories !== false
-    const category = body.category || 'Plumbing'
+    const category = body.category || 'Electrical'
 
-    const withDeps = autoIncludeDependencies(rawItems, autoAccessories, category)
-    const enriched = enrichWithPricing(withDeps)
+    const consolidatedRaw = consolidateItems(rawItems)
+    const withDeps = autoIncludeDependencies(consolidatedRaw, autoAccessories, category)
+    const consolidatedAll = consolidateItems(withDeps)
+    const enriched = enrichWithPricing(consolidatedAll)
 
     const subtotal = enriched.reduce((sum, it) => sum + (it.total || 0), 0)
     const laborTotal = enriched.reduce((sum, it) => sum + (it.laborTotal || 0), 0)
