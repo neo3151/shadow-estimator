@@ -13,8 +13,10 @@
 - A sample plan is available at `/test-plan.pdf`.
 
 ## Catalog
-- Built from `scripts/build-catalog.py` using open datasets (HammerIO, CWICR) merged with the legacy plumbing catalog.
-- Output: `public/data/catalog.json` (4,200+ items).
+- Source of truth: `scripts/build-electrical-catalog.py` (national-average electrical materials & labor).
+- Regenerate: `python3 scripts/build-electrical-catalog.py`
+- Output: `public/data/catalog.json` (~50 electrical SKUs across Branch Power, Conduit & Wire, Controls & Devices, Distribution & Gear, Fasteners & Accessories, Lighting Fixtures).
+- Legacy multi-trade builder `scripts/build-catalog.py` remains in the repo but is **not** the current catalog source.
 
 ## Source Attribution
 - HammerIO 2026 US Construction Materials Pricing Dataset (CC BY 4.0)

@@ -39,7 +39,7 @@ export default function Dashboard() {
       </section>
 
       <section className={styles.metrics}>
-        <div><Database size={18} /><strong>4,200+</strong><span>priced materials</span></div>
+        <div><Database size={18} /><strong>50</strong><span>electrical SKUs</span></div>
         <div><Sparkles size={18} /><strong>AI-assisted</strong><span>plan takeoff</span></div>
         <div><Zap size={18} /><strong>Automatic</strong><span>accessory rules</span></div>
       </section>
@@ -66,8 +66,8 @@ export default function Dashboard() {
             <div className={styles.cardIcon}><Box size={22} /></div>
             <div className={styles.cardContent}>
               <span className={styles.cardKicker}>Material intelligence</span>
-              <h3>Construction Catalog</h3>
-              <p>Search thousands of sourced materials with pricing, labor, size, and category data.</p>
+              <h3>Electrical Catalog</h3>
+              <p>Browse ~50 priced electrical materials with labor, size, and category data.</p>
             </div>
             <ArrowRight className={styles.cardArrow} size={19} />
           </Link>

@@ -3,19 +3,14 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Search } from 'lucide-react'
 import { useEstimate } from '../context/EstimateContext'
-import { itemMatchesTrade, formatCurrency } from '../../lib/utils'
+import { formatCurrency } from '../../lib/utils'
 import CatalogProductImage from './CatalogProductImage'
 import styles from './catalog.module.css'
-
-const TRADES = [
-  'General', 'Plumbing', 'Electrical', 'HVAC', 'Concrete', 
-  'Masonry', 'Drywall', 'Paint', 'Roofing', 'Flooring', 'Insulation'
-]
 
 export default function CatalogPage() {
   const [catalog, setCatalog] = useState([])
   const [search, setSearch] = useState('')
-  const [activeTrade, setActiveTrade] = useState('General')
+  const [activeCategory, setActiveCategory] = useState('All')
   const { addFromCatalog } = useEstimate()
 
   useEffect(() => {
@@ -25,9 +20,17 @@ export default function CatalogPage() {
       .catch((err) => console.error('Failed to load catalog:', err))
   }, [])
 
+  const categories = useMemo(() => {
+    const cats = [...new Set(catalog.map((it) => it.category).filter(Boolean))].sort()
+    return ['All', ...cats]
+  }, [catalog])
+
   const filteredCatalog = useMemo(() => {
-    let filtered = catalog.filter(it => itemMatchesTrade(it, activeTrade))
-    
+    let filtered = catalog
+    if (activeCategory !== 'All') {
+      filtered = filtered.filter((it) => it.category === activeCategory)
+    }
+
     if (search.trim()) {
       const q = search.toLowerCase()
       filtered = filtered.filter(
@@ -37,23 +40,26 @@ export default function CatalogPage() {
           it.size?.toLowerCase().includes(q)
       )
     }
-    
-    return filtered.slice(0, 50) // Limit to 50 for performance
-  }, [catalog, activeTrade, search])
+
+    return filtered
+  }, [catalog, activeCategory, search])
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.headerCopy}>
           <span>Resource library</span>
-          <h1>Materials Catalog</h1>
-          <p>Search sourced construction materials, labor data, and current pricing.</p>
+          <h1>Electrical Materials Catalog</h1>
+          <p>
+            Browse {catalog.length || '~50'} priced electrical SKUs with labor data and
+            national-average pricing.
+          </p>
         </div>
         <div className={styles.searchBar}>
           <Search size={18} color="var(--text-secondary)" />
-          <input 
-            type="text" 
-            placeholder="Search materials, items, SKU..." 
+          <input
+            type="text"
+            placeholder="Search materials, items, SKU..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -64,13 +70,13 @@ export default function CatalogPage() {
         <aside className={styles.sidebar}>
           <h3>Categories</h3>
           <div className={styles.categoryList}>
-            {TRADES.map(trade => (
+            {categories.map((category) => (
               <button
-                key={trade}
-                className={`${styles.categoryItem} ${activeTrade === trade ? styles.categoryItemActive : ''}`}
-                onClick={() => setActiveTrade(trade)}
+                key={category}
+                className={`${styles.categoryItem} ${activeCategory === category ? styles.categoryItemActive : ''}`}
+                onClick={() => setActiveCategory(category)}
               >
-                {trade}
+                {category}
               </button>
             ))}
           </div>
@@ -78,7 +84,7 @@ export default function CatalogPage() {
 
         <main>
           <div className={styles.grid}>
-            {filteredCatalog.map(item => (
+            {filteredCatalog.map((item) => (
               <div key={item.id || item.item_name} className={styles.card}>
                 <div className={`${styles.badge} ${item.price_status === 'priced' ? styles.priced : styles.needsPricing}`}>
                   {item.price_status === 'priced' ? 'Priced' : 'Needs Pricing'}
@@ -91,17 +97,16 @@ export default function CatalogPage() {
                   {item.source_name && <><br/>Source: {item.source_name}</>}
                   {item.price_as_of && <><br/>As of: {item.price_as_of}</>}
                 </p>
-                
+
                 <div className={styles.cardFooter}>
                   <div className={styles.price}>
                     {item.price_status === 'priced' ? formatCurrency(item.estimated_price_usd) : 'Price unavailable'}
                     {item.price_status === 'priced' && <span className={styles.unit}>/{item.unit || 'ea'}</span>}
                   </div>
-                  <button 
+                  <button
                     className={styles.addButton}
                     onClick={() => {
                       addFromCatalog(item)
-                      // Optional: Show a tiny toast here, but updating context is enough for now
                     }}
                   >
                     Add to Estimate
@@ -109,7 +114,7 @@ export default function CatalogPage() {
                 </div>
               </div>
             ))}
-            
+
             {filteredCatalog.length === 0 && (
               <div style={{ color: 'var(--text-secondary)', padding: '2rem' }}>
                 No materials found matching your criteria.
