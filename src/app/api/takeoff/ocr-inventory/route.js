@@ -3,6 +3,15 @@ import { join } from 'path'
 import { tmpdir } from 'os'
 import { GoogleGenAI } from '@google/genai'
 
+const ELECTRICAL_VOCABULARY = `
+BRANCH POWER: Duplex Receptacle (Outlet), GFCI Receptacle, Quad Outlet, Dedicated 240V Outlet, Floor Box Outlet, USB Outlet, Exterior Weatherproof Receptacle
+CONTROLS & DEVICES: Single Pole Switch, 3-Way Switch, 4-Way Switch, Dimmer Switch, Occupancy Sensor, Motion Sensor, Smart Timer Switch
+LIGHTING FIXTURES: 2x4 LED Lay-in Troffer, 2x2 LED Troffer, Recessed Downlight (Can Light), High-Bay LED Fixture, Strip Light, Exterior Wall Pack, Emergency Exit Sign Combo, Track Light Head, Pendant Light
+DISTRIBUTION & GEAR: Main Distribution Panel, Sub-Panel / Load Center, Circuit Breaker, Disconnect Switch, Transformer, Meter Socket, Junction Box (J-Box), Pull Box
+CONDUIT & WIRE: EMT Conduit, PVC Conduit, MC Cable, NM-B Romex, THHN Copper Wire
+FIRE ALARM & SAFETY: Smoke Detector, Fire Alarm Horn/Strobe, Manual Pull Station, Heat Detector, Carbon Monoxide Detector
+LOW VOLTAGE & DATA: Data / Ethernet Outlet (RJ45), TV / Coax Outlet, Telephone Outlet, Intercom Speaker, Security Camera`
+
 // Load catalog for price matching
 function loadCatalog() {
   const catalogPath = join(process.cwd(), 'public', 'data', 'catalog.json')
@@ -17,8 +26,8 @@ function loadCatalog() {
 }
 
 function matchCatalogItem(catalog, itemName, type) {
-  const lowerName = itemName.toLowerCase()
-  
+  const lowerName = (itemName || '').toLowerCase()
+
   // Try exact or fuzzy match in catalog
   const pricedCatalog = catalog.filter((c) => c.price_status !== 'unpriced' && Number(c.estimated_price_usd) > 0)
   let match = pricedCatalog.find(
@@ -42,16 +51,29 @@ function matchCatalogItem(catalog, itemName, type) {
     }
   }
 
-  // Fallbacks by type
-  if (lowerName.includes('toilet')) return { price: 285.0, labor: 1.5, size: 'Standard', unit: 'each', category: 'Plumbing Fixtures' }
-  if (lowerName.includes('sink')) return { price: 145.0, labor: 0.8, size: 'Standard', unit: 'each', category: 'Plumbing Fixtures' }
-  if (lowerName.includes('water heater')) return { price: 685.0, labor: 2.5, size: '50 Gallon', unit: 'each', category: 'Water Heating Equipment' }
-  if (lowerName.includes('shower')) return { price: 195.0, labor: 1.2, size: 'Standard', unit: 'each', category: 'Plumbing Fixtures' }
-  if (lowerName.includes('bathtub') || lowerName.includes('tub')) return { price: 425.0, labor: 2.5, size: '60 inch', unit: 'each', category: 'Plumbing Fixtures' }
-  if (lowerName.includes('washer') || lowerName.includes('dryer')) return { price: 350.0, labor: 1.0, size: 'Standard', unit: 'each', category: 'Plumbing Fixtures' }
-  if (lowerName.includes('pipe')) return { price: 4.85, labor: 0.12, size: '1/2 inch', unit: 'per foot', category: 'Piping & Tubing' }
+  // Electrical fallbacks by type / keyword (aligned with Electrical Edition catalog)
+  if (/gfci|gfi/.test(lowerName)) return { price: 18.5, labor: 0.35, size: '20 Amp 125 Volt', unit: 'each', category: 'Branch Power' }
+  if (/receptacle|outlet|duplex|quad/.test(lowerName)) return { price: 3.85, labor: 0.25, size: '20 Amp 125 Volt', unit: 'each', category: 'Branch Power' }
+  if (/dimmer|occupancy|motion|sensor|timer/.test(lowerName)) return { price: 28.0, labor: 0.4, size: 'Standard', unit: 'each', category: 'Controls & Devices' }
+  if (/switch|3-way|4-way|single.?pole/.test(lowerName)) return { price: 4.5, labor: 0.3, size: '20 Amp 120/277V', unit: 'each', category: 'Controls & Devices' }
+  if (/troffer|downlight|high-?bay|wall.?pack|exit.?sign|strip.?light|pendant|track.?light|fixture|luminaire/.test(lowerName)) {
+    return { price: 45.0, labor: 0.5, size: 'Standard', unit: 'each', category: 'Lighting Fixtures' }
+  }
+  if (/panel|load.?center|sub-?panel|breaker|disconnect|transformer|meter.?socket/.test(lowerName)) {
+    return { price: 185.0, labor: 1.5, size: 'Standard', unit: 'each', category: 'Distribution & Gear' }
+  }
+  if (/junction|j-?box|pull.?box/.test(lowerName)) return { price: 22.0, labor: 0.35, size: '8x8x4 inch', unit: 'each', category: 'Distribution & Gear' }
+  if (/emt|conduit|pvc conduit|mc cable|romex|nm-?b|thhn|wire|cable/.test(lowerName) || type === 'conduit' || type === 'wire') {
+    return { price: 1.85, labor: 0.08, size: '3/4 inch', unit: 'per foot', category: 'Conduit & Wire' }
+  }
+  if (/smoke|horn|strobe|pull.?station|heat.?detector|carbon.?monoxide|detector/.test(lowerName)) {
+    return { price: 35.0, labor: 0.4, size: 'Standard', unit: 'each', category: 'Controls & Devices' }
+  }
+  if (/data|ethernet|rj45|coax|telephone|camera|intercom/.test(lowerName)) {
+    return { price: 8.5, labor: 0.3, size: 'Standard', unit: 'each', category: 'Branch Power' }
+  }
 
-  return { price: 50.0, labor: 0.5, size: 'Standard', unit: 'each', category: 'General' }
+  return { price: 25.0, labor: 0.35, size: 'Standard', unit: 'each', category: 'Branch Power' }
 }
 
 export async function POST(request) {
@@ -75,26 +97,30 @@ export async function POST(request) {
     const imageBuffer = readFileSync(imagePath)
     const catalog = loadCatalog()
 
-    const prompt = `You are an expert construction document estimator and OCR engine. Analyze this blueprint image in detail.
-Perform full OCR and item inventory extraction.
+    const prompt = `You are an expert electrical construction estimator and OCR engine. Analyze this electrical blueprint / power plan image in detail.
+Perform full OCR and electrical item inventory extraction.
+
+Prefer item names from this vocabulary whenever possible:
+${ELECTRICAL_VOCABULARY}
 
 Output a valid JSON object with the following structure:
 {
   "title": "Title or Header text on drawing",
-  "scale": "Scale text found on drawing (e.g. 1/4\" = 1'-0\")",
+  "scale": "Scale text found on drawing (e.g. 1/4\\" = 1'-0\\")",
   "rooms": ["Room 1", "Room 2"],
   "notes": ["All text notes, callouts, or legend specifications found"],
   "items": [
     {
-      "name": "Specific item name (e.g., Toilet, Bathroom Sink, Water Heater, Copper Pipe 1/2 inch, PVC Pipe 2 inch)",
-      "type": "fixture" or "pipe" or "equipment",
+      "name": "Specific electrical item name (e.g., Duplex Receptacle, GFCI Outlet, Single Pole Switch, 2x4 LED Lay-In Troffer, Main Distribution Panel, EMT Conduit 3/4 inch)",
+      "type": "device" or "fixture" or "gear" or "conduit" or "wire",
       "qty": 2,
-      "specs": "Notes or specs extracted for this item (e.g. low-flow 1.28gpf)"
+      "specs": "Notes or specs extracted for this item (e.g. 20A 125V, 3/4 in EMT)"
     }
   ]
 }
 
-Extract ALL fixtures, appliances, piping runs, water heaters, sinks, toilets, tubs, and showers visible on the plan.
+Extract ALL electrical devices, lighting fixtures, panels, breakers, disconnects, junction boxes, conduit runs, and wire/cable visible on the plan.
+Ignore architectural furniture, doors, windows, and non-electrical marks.
 Return ONLY valid JSON without markdown formatting.`
 
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
@@ -110,7 +136,7 @@ Return ONLY valid JSON without markdown formatting.`
       data = JSON.parse(text)
     } catch (e) {
       console.error('Failed to parse Gemini OCR response:', text)
-      data = { title: 'Blueprint OCR Takeoff', notes: [], items: [] }
+      data = { title: 'Electrical Blueprint OCR Takeoff', notes: [], items: [] }
     }
 
     const rawItems = Array.isArray(data.items) ? data.items : []
@@ -125,7 +151,7 @@ Return ONLY valid JSON without markdown formatting.`
       return {
         id: Date.now() + Math.random(),
         name: item.name,
-        type: item.type || 'fixture',
+        type: item.type || 'device',
         qty,
         size: match.size,
         unit: match.unit,
@@ -143,7 +169,7 @@ Return ONLY valid JSON without markdown formatting.`
     const totalLaborHours = inventory.reduce((sum, i) => sum + i.totalLabor, 0)
 
     return Response.json({
-      title: data.title || 'Architectural Blueprint Takeoff',
+      title: data.title || 'Electrical Blueprint Takeoff',
       scale: data.scale || 'As Shown',
       rooms: data.rooms || [],
       notes: data.notes || [],

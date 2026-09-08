@@ -74,7 +74,7 @@ Use "Not a fixture" for text, dimensions, wall fragments, doors, windows, cabine
 Return exactly this JSON object:
 {
   "classifications": [
-    { "n": 1, "name": "Toilet", "category": "Plumbing", "confidence": 0.94 }
+    { "n": 1, "name": "Duplex Receptacle", "category": "Branch Power", "confidence": 0.94 }
   ],
   "document": {
     "title": "Drawing title",
@@ -82,7 +82,7 @@ Return exactly this JSON object:
     "rooms": ["Room name"],
     "notes": ["Relevant note"],
     "inventory": [
-      { "name": "Toilet", "category": "Plumbing", "qty": 2, "size": "", "unit": "each", "specs": "", "confidence": 0.9 }
+      { "name": "Duplex Receptacle", "category": "Branch Power", "qty": 2, "size": "", "unit": "each", "specs": "", "confidence": 0.9 }
     ]
   }
 }

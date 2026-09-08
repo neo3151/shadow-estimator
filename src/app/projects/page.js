@@ -75,7 +75,7 @@ export default function ProjectsPage() {
           <label>Project name<input required value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} placeholder="Riverside Medical Office" /></label>
           <label>Client<input value={form.client} onChange={(event) => setForm({ ...form, client: event.target.value })} placeholder="Client or company" /></label>
           <label>Site address<input value={form.address} onChange={(event) => setForm({ ...form, address: event.target.value })} placeholder="Project location" /></label>
-          <label>Trade<select value={form.trade} onChange={(event) => setForm({ ...form, trade: event.target.value })}><option>MEP</option><option>Plumbing</option><option>Electrical</option><option>HVAC</option><option>General</option></select></label>
+          <label>Trade<select value={form.trade} onChange={(event) => setForm({ ...form, trade: event.target.value })}><option>Electrical</option><option>MEP</option><option>HVAC</option><option>General</option></select></label>
           <div className={styles.formActions}><button type="button" onClick={() => setShowForm(false)}>Cancel</button><button type="submit">Create project</button></div>
         </form>
       )}
