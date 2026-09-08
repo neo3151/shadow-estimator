@@ -51,18 +51,6 @@ const RULES = [
       { name: 'Circuit Breaker 20A 1-Pole', size: '20 Amp 1-Pole 120V Standard Plug-on', qty: 4 },
     ],
   },
-  {
-    category: 'Plumbing',
-    test: /toilet/i,
-    deps: [
-      { name: 'Wax Ring with Bolts', size: 'Standard', qty: 'main' },
-      { name: 'Toilet Bolts - Brass Pair', qty: 'main' },
-      { name: 'Angle Stop Valve', size: '1/2 inch', qty: 'main' },
-      { name: 'Braided Supply Line - 3/8 inch x 12 inch', qty: 'main' },
-      { name: 'Sanitary Tee - PVC Sch 40', size: '3 inch', qty: 'main' },
-      { name: 'Steel Stud Safety Protection Plate', size: '3 inch x 5 inch (16-Gauge)', qty: 'main' },
-    ],
-  },
 ]
 
 function scoreMatch(item, query, sizeHint) {

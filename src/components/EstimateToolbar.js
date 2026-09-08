@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import styles from './EstimateToolbar.module.css'
 
 const CATEGORIES = [
-  'Plumbing',
   'Electrical',
   'HVAC',
   'Concrete',

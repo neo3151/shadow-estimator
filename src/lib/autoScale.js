@@ -7,7 +7,7 @@ export async function detectScaleFromImage(imagePath) {
 
   try {
     const imageBuffer = readFileSync(imagePath)
-    const prompt = `Inspect this architectural/plumbing blueprint image and find the scale specification or major dimension lines.
+    const prompt = `Inspect this architectural/electrical blueprint image and find the scale specification or major dimension lines.
 
 Return a valid JSON object:
 {
