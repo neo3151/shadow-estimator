@@ -6,6 +6,14 @@ export function formatCurrency(n) {
 
 // Maps the catalog's own category string to the UI trade/category dropdown value.
 export const CATEGORY_TO_TRADE = {
+  // Current electrical catalog (build-electrical-catalog.py)
+  'Branch Power': 'Electrical',
+  'Conduit & Wire': 'Electrical',
+  'Controls & Devices': 'Electrical',
+  'Distribution & Gear': 'Electrical',
+  'Fasteners & Accessories': 'Electrical',
+  'Lighting Fixtures': 'Electrical',
+
   // Legacy plumbing catalog
   'Piping & Tubing': 'Plumbing',
   'Pipe Fittings': 'Plumbing',
